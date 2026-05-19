@@ -2253,6 +2253,7 @@ async def next_qrcode() -> HTMLResponse:
     return HTMLResponse(content=_html_cache.get("qrcode", "<h1>QR Code</h1>"))
 
 
+@app.get("/apps/")
 @app.get("/apps")
 async def apps_landing() -> HTMLResponse:
     apps_index = Path(__file__).resolve().parent / "site" / "public" / "apps" / "index.html"
