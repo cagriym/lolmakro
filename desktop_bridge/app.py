@@ -105,6 +105,46 @@ class DesktopBridgeApp:
         except Exception:
             pass
 
+    def _check_apk_update(self) -> None:
+        site_url = self._get_site_url()
+        if not site_url:
+            return
+        try:
+            resp = httpx.get(f"{site_url}/latestapk", timeout=10)
+            if resp.status_code != 200:
+                return
+            data = resp.json()
+            latest = data.get("version", "")
+            if not latest:
+                return
+
+            config_dir = Path(os.environ.get("LOCALAPPDATA", str(Path.home() / "AppData" / "Local"))) / "LolMakroBridge"
+            config_dir.mkdir(parents=True, exist_ok=True)
+            version_file = config_dir / "apk_version.json"
+            current = ""
+            if version_file.exists():
+                try:
+                    current = json.loads(version_file.read_text(encoding="utf-8")).get("version", "")
+                except Exception:
+                    current = ""
+
+            if self._is_newer_version(latest, current):
+                self._notify(
+                    "lolsiken",
+                    f"Mobil uygulama guncellemesi: v{latest}. {data.get('download_url', '')} adresinden indirin.",
+                )
+        except Exception:
+            pass
+
+    @staticmethod
+    def _is_newer_version(latest: str, current: str) -> bool:
+        def _parse(v: str) -> tuple[int, ...]:
+            try:
+                return tuple(int(x) for x in v.split(".", 3))
+            except Exception:
+                return (0,)
+        return _parse(latest) > _parse(current) if current else True
+
     def _create_site_token(self) -> str | None:
         site_url = self._get_site_url()
         if not site_url or not self._device_id:
@@ -179,6 +219,7 @@ class DesktopBridgeApp:
 
     def run(self) -> None:
         self._register_with_site()
+        self._check_apk_update()
 
         icon = Path(self.settings.icon_path)
         if not icon.is_absolute():
