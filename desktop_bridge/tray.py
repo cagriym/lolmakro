@@ -19,6 +19,7 @@ class TrayController:
         notify: Callable[[str, str], None],
         on_restart: Callable[[], None],
         on_exit: Callable[[], None],
+        on_download_apk: Callable[[], None] | None = None,
     ) -> None:
         self.icon_path = icon_path
         self.startup_enabled_getter = startup_enabled_getter
@@ -32,6 +33,7 @@ class TrayController:
                 notify,
                 on_restart,
                 on_exit,
+                on_download_apk,
             ),
         )
 
@@ -76,9 +78,14 @@ class TrayController:
         notify: Callable[[str, str], None],
         on_restart: Callable[[], None],
         on_exit: Callable[[], None],
+        on_download_apk: Callable[[], None] | None = None,
     ) -> pystray.Menu:
-        return pystray.Menu(
+        items = [
             pystray.MenuItem("Telefon Icin QR Kod Goster", self._safe_run(on_show_qr)),
+        ]
+        if on_download_apk:
+            items.append(pystray.MenuItem("Mobil Uygulamayi Indir", self._safe_run(on_download_apk)))
+        items.extend([
             pystray.MenuItem(
                 "Baslangicta Calistir",
                 self._safe_run(on_toggle_startup),
@@ -86,7 +93,8 @@ class TrayController:
             ),
             pystray.MenuItem("Yeniden Baslat", self._safe_run(on_restart)),
             pystray.MenuItem("Cikis", self._safe_run(on_exit)),
-        )
+        ])
+        return pystray.Menu(*items)
 
     def run(self) -> None:
         self._icon.run()

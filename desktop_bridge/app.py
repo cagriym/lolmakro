@@ -10,6 +10,7 @@ import ctypes
 import httpx
 import uvicorn
 
+from .process_manager import ProcessManager
 from .qr_window import QRWindow
 from .security import token_manager
 from .settings import AppSettings
@@ -174,6 +175,12 @@ class DesktopBridgeApp:
 
         return f"{remote_base}/mobile/pair?token={quote(token, safe='')}"
 
+    def _download_apk(self) -> None:
+        site_url = self._get_site_url()
+        if site_url:
+            import webbrowser
+            webbrowser.open(f"{site_url}/latestapk")
+
     def _show_qr(self) -> None:
         try:
             self.qr_window.show_loading("Guvenli baglanti linki olusturuluyor...")
@@ -232,6 +239,7 @@ class DesktopBridgeApp:
             notify=self._notify,
             on_restart=self._restart,
             on_exit=self._exit,
+            on_download_apk=self._download_apk,
         )
         self.tray.run_async()
 
