@@ -2125,6 +2125,14 @@ async def site_latest_apk() -> JSONResponse:
     return JSONResponse({"version": "0.0.0", "error": "Version info not found"})
 
 
+@app.get("/latestapk")
+async def site_latest_apk_download() -> RedirectResponse:
+    """Redirect to the latest APK file for easy sharing/download."""
+    site_origin = os.environ.get("NEXT_PUBLIC_SITE_URL", "").rstrip("/") or ""
+    apk_url = f"{site_origin}/apk/app-release.apk"
+    return RedirectResponse(url=apk_url)
+
+
 # ---------------------------------------------------------------------------
 
 @app.get("/api/mobile/session")

@@ -110,7 +110,7 @@ class DesktopBridgeApp:
         if not site_url:
             return
         try:
-            resp = httpx.get(f"{site_url}/latestapk", timeout=10)
+            resp = httpx.get(f"{site_url}/api/latestapk", timeout=10)
             if resp.status_code != 200:
                 return
             data = resp.json()
