@@ -31,6 +31,8 @@ installer/
 # Next.js site
 site/node_modules/
 site/.next/
+site/out/
+site/data/
 
 # Development specs
 .kiro/

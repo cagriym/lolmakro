@@ -1,0 +1,240 @@
+/* RuneTreeSelector Component Styles */
+
+.rune-tree-selector {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(200, 170, 110, 0.2);
+  margin-bottom: 20px;
+}
+
+.selector-header {
+  margin-bottom: 16px;
+}
+
+.selector-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #c8aa6e;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 8px 0;
+}
+
+.selection-indicators {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.indicator {
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.primary-indicator {
+  background: rgba(200, 170, 110, 0.2);
+  color: #c8aa6e;
+  border: 1px solid rgba(200, 170, 110, 0.4);
+}
+
+.secondary-indicator {
+  background: rgba(100, 150, 200, 0.2);
+  color: #6496c8;
+  border: 1px solid rgba(100, 150, 200, 0.4);
+}
+
+/* Rune Tree Grid */
+.rune-tree-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.rune-tree-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(200, 170, 110, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 110px;
+  /* Ensure minimum touch target size of 44x44px */
+  min-width: 44px;
+}
+
+.rune-tree-item:hover {
+  border-color: rgba(200, 170, 110, 0.5);
+  background: rgba(200, 170, 110, 0.1);
+  transform: translateY(-2px);
+}
+
+.rune-tree-item:active {
+  transform: translateY(0);
+}
+
+/* Primary Tree Selection Styling */
+.rune-tree-item.selected-primary {
+  border-color: #c8aa6e;
+  border-width: 3px;
+  background: rgba(200, 170, 110, 0.2);
+  box-shadow: 0 0 16px rgba(200, 170, 110, 0.4);
+}
+
+.rune-tree-item.selected-primary:hover {
+  border-color: #c8aa6e;
+  background: rgba(200, 170, 110, 0.25);
+}
+
+/* Secondary Tree Selection Styling */
+.rune-tree-item.selected-secondary {
+  border-color: #6496c8;
+  border-width: 3px;
+  background: rgba(100, 150, 200, 0.2);
+  box-shadow: 0 0 16px rgba(100, 150, 200, 0.4);
+}
+
+.rune-tree-item.selected-secondary:hover {
+  border-color: #6496c8;
+  background: rgba(100, 150, 200, 0.25);
+}
+
+/* Tree Icon */
+.tree-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(200, 170, 110, 0.1);
+  border: 2px solid rgba(200, 170, 110, 0.3);
+  transition: all 0.2s ease;
+}
+
+.rune-tree-item:hover .tree-icon-wrapper {
+  background: rgba(200, 170, 110, 0.2);
+  border-color: rgba(200, 170, 110, 0.5);
+}
+
+.rune-tree-item.selected-primary .tree-icon-wrapper {
+  background: rgba(200, 170, 110, 0.3);
+  border-color: #c8aa6e;
+  box-shadow: 0 0 12px rgba(200, 170, 110, 0.5);
+}
+
+.rune-tree-item.selected-secondary .tree-icon-wrapper {
+  background: rgba(100, 150, 200, 0.3);
+  border-color: #6496c8;
+  box-shadow: 0 0 12px rgba(100, 150, 200, 0.5);
+}
+
+.tree-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(1.2);
+  transition: all 0.2s ease;
+}
+
+.rune-tree-item:hover .tree-icon {
+  filter: brightness(1.4);
+  transform: scale(1.1);
+}
+
+.rune-tree-item.selected-primary .tree-icon,
+.rune-tree-item.selected-secondary .tree-icon {
+  filter: brightness(1.5);
+}
+
+/* Tree Name */
+.tree-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a09b8c;
+  text-align: center;
+  transition: color 0.2s ease;
+}
+
+.rune-tree-item:hover .tree-name {
+  color: #c8aa6e;
+}
+
+.rune-tree-item.selected-primary .tree-name {
+  color: #c8aa6e;
+  font-weight: 700;
+}
+
+.rune-tree-item.selected-secondary .tree-name {
+  color: #6496c8;
+  font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .rune-tree-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .rune-tree-item {
+    padding: 10px 6px;
+    min-height: 100px;
+  }
+
+  .selector-header h3 {
+    font-size: 16px;
+  }
+
+  .tree-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rune-tree-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .rune-tree-item {
+    padding: 8px 4px;
+    min-height: 90px;
+  }
+
+  .tree-icon-wrapper {
+    width: 44px;
+    height: 44px;
+  }
+
+  .tree-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Accessibility - Prevent double-tap zoom on touch devices */
+.rune-tree-item {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(200, 170, 110, 0.2);
+}
+
+/* Visual feedback for touch interactions */
+.rune-tree-item:active {
+  background: rgba(200, 170, 110, 0.15);
+}
+
+.rune-tree-item.selected-primary:active {
+  background: rgba(200, 170, 110, 0.3);
+}
+
+.rune-tree-item.selected-secondary:active {
+  background: rgba(100, 150, 200, 0.3);
+}

@@ -1,0 +1,1017 @@
+{
+  "version": "1.1.0",
+  "lastUpdated": "2024-01-15T00:00:00Z",
+  "presets": [
+    {
+      "championId": 1,
+      "queueId": 420,
+      "role": "middle",
+      "pages": [
+        {
+          "name": "Annie - Burst Mage",
+          "primaryStyleId": 8200,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8214, 8226, 8210, 8237, 8139, 8135],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Annie - Sustain",
+          "primaryStyleId": 8200,
+          "subStyleId": 8400,
+          "selectedPerkIds": [8214, 8226, 8210, 8237, 8345, 8347],
+          "statShards": [5008, 5008, 5001],
+          "recommendedSpells": [4, 12]
+        }
+      ]
+    },
+    {
+      "championId": 157,
+      "queueId": 420,
+      "role": "middle",
+      "pages": [
+        {
+          "name": "Yasuo - Conqueror",
+          "primaryStyleId": 8000,
+          "subStyleId": 8400,
+          "selectedPerkIds": [8010, 9111, 9104, 8014, 8473, 8451],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Yasuo - Fleet Footwork",
+          "primaryStyleId": 8000,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8021, 9111, 9104, 8014, 8139, 8135],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Yasuo - Lethal Tempo",
+          "primaryStyleId": 8000,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8008, 9111, 9104, 8014, 8345, 8347],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 157,
+      "queueId": 420,
+      "role": "top",
+      "pages": [
+        {
+          "name": "Yasuo Top - Conqueror",
+          "primaryStyleId": 8000,
+          "subStyleId": 8400,
+          "selectedPerkIds": [8010, 9111, 9104, 8014, 8473, 8242],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 12]
+        },
+        {
+          "name": "Yasuo Top - Grasp",
+          "primaryStyleId": 8400,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8437, 8463, 8473, 8242, 9111, 8014],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 12]
+        }
+      ]
+    },
+    {
+      "championId": 238,
+      "queueId": 420,
+      "role": "middle",
+      "pages": [
+        {
+          "name": "Zed - Electrocute",
+          "primaryStyleId": 8100,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8112, 8139, 8138, 8135, 9111, 8014],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Zed - First Strike",
+          "primaryStyleId": 8300,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8369, 8304, 8313, 8347, 8139, 8135],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Zed - Conqueror",
+          "primaryStyleId": 8000,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8010, 9111, 9104, 8014, 8139, 8106],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 103,
+      "queueId": 420,
+      "role": "middle",
+      "pages": [
+        {
+          "name": "Ahri - Electrocute",
+          "primaryStyleId": 8100,
+          "subStyleId": 8200,
+          "selectedPerkIds": [8112, 8139, 8138, 8135, 8226, 8237],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Ahri - Glacial Augment",
+          "primaryStyleId": 8300,
+          "subStyleId": 8200,
+          "selectedPerkIds": [8351, 8306, 8321, 8347, 8226, 8210],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Ahri - Summon Aery",
+          "primaryStyleId": 8200,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8214, 8226, 8210, 8237, 8345, 8347],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 222,
+      "queueId": 420,
+      "role": "bottom",
+      "pages": [
+        {
+          "name": "Jinx - Lethal Tempo",
+          "primaryStyleId": 8000,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8008, 9111, 9104, 8014, 8139, 8106],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 7]
+        },
+        {
+          "name": "Jinx - Fleet Footwork",
+          "primaryStyleId": 8000,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8021, 9111, 9104, 8014, 8345, 8347],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 7]
+        },
+        {
+          "name": "Jinx - Press the Attack",
+          "primaryStyleId": 8000,
+          "subStyleId": 8200,
+          "selectedPerkIds": [8005, 9111, 9104, 8014, 8226, 8210],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 7]
+        }
+      ]
+    },
+    {
+      "championId": 412,
+      "queueId": 420,
+      "role": "utility",
+      "pages": [
+        {
+          "name": "Thresh - Aftershock",
+          "primaryStyleId": 8400,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8439, 8463, 8473, 8242, 8345, 8347],
+          "statShards": [5008, 5002, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Thresh - Guardian",
+          "primaryStyleId": 8400,
+          "subStyleId": 8200,
+          "selectedPerkIds": [8465, 8463, 8473, 8242, 8226, 8210],
+          "statShards": [5008, 5002, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Thresh - Glacial Augment",
+          "primaryStyleId": 8300,
+          "subStyleId": 8400,
+          "selectedPerkIds": [8351, 8306, 8321, 8347, 8463, 8242],
+          "statShards": [5008, 5002, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 64,
+      "queueId": 420,
+      "role": "jungle",
+      "pages": [
+        {
+          "name": "Lee Sin - Conqueror",
+          "primaryStyleId": 8000,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8010, 9111, 9104, 8014, 8139, 8106],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [11, 4]
+        },
+        {
+          "name": "Lee Sin - Electrocute",
+          "primaryStyleId": 8100,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8112, 8139, 8138, 8106, 9111, 8014],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [11, 4]
+        },
+        {
+          "name": "Lee Sin - Phase Rush",
+          "primaryStyleId": 8200,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8230, 8226, 8210, 8236, 9111, 8014],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [11, 4]
+        }
+      ]
+    },
+    {
+      "championId": 122,
+      "queueId": 420,
+      "role": "top",
+      "pages": [
+        {
+          "name": "Darius - Conqueror",
+          "primaryStyleId": 8000,
+          "subStyleId": 8400,
+          "selectedPerkIds": [8010, 9111, 9104, 8299, 8473, 8242],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Darius - Phase Rush",
+          "primaryStyleId": 8200,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8230, 8226, 8210, 8236, 9111, 8014],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 6]
+        },
+        {
+          "name": "Darius - Grasp",
+          "primaryStyleId": 8400,
+          "subStyleId": 8000,
+          "selectedPerkIds": [8437, 8463, 8473, 8242, 9111, 8299],
+          "statShards": [5005, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 99,
+      "queueId": 420,
+      "role": "middle",
+      "pages": [
+        {
+          "name": "Lux - Arcane Comet",
+          "primaryStyleId": 8200,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8229, 8226, 8210, 8237, 8345, 8347],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Lux - Dark Harvest",
+          "primaryStyleId": 8100,
+          "subStyleId": 8200,
+          "selectedPerkIds": [8128, 8139, 8138, 8135, 8226, 8237],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Lux - Summon Aery",
+          "primaryStyleId": 8200,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8214, 8226, 8210, 8237, 8139, 8135],
+          "statShards": [5008, 5008, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    },
+    {
+      "championId": 99,
+      "queueId": 420,
+      "role": "utility",
+      "pages": [
+        {
+          "name": "Lux Support - Summon Aery",
+          "primaryStyleId": 8200,
+          "subStyleId": 8300,
+          "selectedPerkIds": [8214, 8226, 8210, 8237, 8345, 8347],
+          "statShards": [5008, 5002, 5002],
+          "recommendedSpells": [4, 14]
+        },
+        {
+          "name": "Lux Support - Arcane Comet",
+          "primaryStyleId": 8200,
+          "subStyleId": 8100,
+          "selectedPerkIds": [8229, 8226, 8210, 8237, 8139, 8135],
+          "statShards": [5008, 5002, 5002],
+          "recommendedSpells": [4, 14]
+        }
+      ]
+    }
+  ],
+  "runeMetadata": [
+    {
+      "id": 8214,
+      "key": "SummonAery",
+      "name": "Summon Aery",
+      "shortDesc": "Your attacks and abilities send Aery to a target",
+      "icon": "perk-images/Styles/Sorcery/SummonAery/SummonAery.png",
+      "styleId": 8200,
+      "slot": 0
+    },
+    {
+      "id": 8226,
+      "key": "ManaflowBand",
+      "name": "Manaflow Band",
+      "shortDesc": "Hitting an enemy champion with an ability permanently increases your maximum mana",
+      "icon": "perk-images/Styles/Sorcery/ManaflowBand/ManaflowBand.png",
+      "styleId": 8200,
+      "slot": 1
+    },
+    {
+      "id": 8210,
+      "key": "Transcendence",
+      "name": "Transcendence",
+      "shortDesc": "Gain bonuses upon reaching level 5 and 8",
+      "icon": "perk-images/Styles/Sorcery/Transcendence/Transcendence.png",
+      "styleId": 8200,
+      "slot": 2
+    },
+    {
+      "id": 8237,
+      "key": "Scorch",
+      "name": "Scorch",
+      "shortDesc": "Your first damaging ability hit every 10s burns champions",
+      "icon": "perk-images/Styles/Sorcery/Scorch/Scorch.png",
+      "styleId": 8200,
+      "slot": 3
+    },
+    {
+      "id": 8139,
+      "key": "TasteOfBlood",
+      "name": "Taste of Blood",
+      "shortDesc": "Heal when you damage an enemy champion",
+      "icon": "perk-images/Styles/Domination/TasteOfBlood/TasteOfBlood.png",
+      "styleId": 8100,
+      "slot": 1
+    },
+    {
+      "id": 8135,
+      "key": "TreasureHunter",
+      "name": "Treasure Hunter",
+      "shortDesc": "Gain additional gold for each unique takedown",
+      "icon": "perk-images/Styles/Domination/TreasureHunter/TreasureHunter.png",
+      "styleId": 8100,
+      "slot": 3
+    },
+    {
+      "id": 8345,
+      "key": "BiscuitDelivery",
+      "name": "Biscuit Delivery",
+      "shortDesc": "Gain a free Biscuit every 2 min",
+      "icon": "perk-images/Styles/Inspiration/BiscuitDelivery/BiscuitDelivery.png",
+      "styleId": 8300,
+      "slot": 1
+    },
+    {
+      "id": 8347,
+      "key": "CosmicInsight",
+      "name": "Cosmic Insight",
+      "shortDesc": "Gain Ability Haste and reduce summoner spell cooldowns",
+      "icon": "perk-images/Styles/Inspiration/CosmicInsight/CosmicInsight.png",
+      "styleId": 8300,
+      "slot": 2
+    },
+    {
+      "id": 5008,
+      "key": "StatModAdaptive",
+      "name": "Adaptive Force",
+      "shortDesc": "+9 Adaptive Force",
+      "icon": "perk-images/StatMods/StatModsAdaptiveForceIcon.png",
+      "styleId": 0,
+      "slot": 0
+    },
+    {
+      "id": 5002,
+      "key": "StatModArmor",
+      "name": "Armor",
+      "shortDesc": "+6 Armor",
+      "icon": "perk-images/StatMods/StatModsArmorIcon.png",
+      "styleId": 0,
+      "slot": 2
+    },
+    {
+      "id": 5001,
+      "key": "StatModHealthScaling",
+      "name": "Health Scaling",
+      "shortDesc": "+10-180 Health (based on level)",
+      "icon": "perk-images/StatMods/StatModsHealthScalingIcon.png",
+      "styleId": 0,
+      "slot": 2
+    },
+    {
+      "id": 5005,
+      "key": "StatModAttackSpeed",
+      "name": "Attack Speed",
+      "shortDesc": "+10% Attack Speed",
+      "icon": "perk-images/StatMods/StatModsAttackSpeedIcon.png",
+      "styleId": 0,
+      "slot": 0
+    },
+    {
+      "id": 5003,
+      "key": "StatModMagicRes",
+      "name": "Magic Resist",
+      "shortDesc": "+8 Magic Resist",
+      "icon": "perk-images/StatMods/StatModsMagicResIcon.png",
+      "styleId": 0,
+      "slot": 2
+    },
+    {
+      "id": 8005,
+      "key": "PressTheAttack",
+      "name": "Press the Attack",
+      "shortDesc": "Hitting an enemy champion 3 consecutive times makes them vulnerable",
+      "icon": "perk-images/Styles/Precision/PressTheAttack/PressTheAttack.png",
+      "styleId": 8000,
+      "slot": 0
+    },
+    {
+      "id": 8008,
+      "key": "LethalTempo",
+      "name": "Lethal Tempo",
+      "shortDesc": "Gain attack speed when attacking champions",
+      "icon": "perk-images/Styles/Precision/LethalTempo/LethalTempoTemp.png",
+      "styleId": 8000,
+      "slot": 0
+    },
+    {
+      "id": 8021,
+      "key": "FleetFootwork",
+      "name": "Fleet Footwork",
+      "shortDesc": "Attacking and moving builds Energy stacks. At 100 stacks, heal and gain movement speed",
+      "icon": "perk-images/Styles/Precision/FleetFootwork/FleetFootwork.png",
+      "styleId": 8000,
+      "slot": 0
+    },
+    {
+      "id": 8010,
+      "key": "Conqueror",
+      "name": "Conqueror",
+      "shortDesc": "Gain stacks of adaptive force when attacking enemy champions",
+      "icon": "perk-images/Styles/Precision/Conqueror/Conqueror.png",
+      "styleId": 8000,
+      "slot": 0
+    },
+    {
+      "id": 9101,
+      "key": "Overheal",
+      "name": "Overheal",
+      "shortDesc": "Excess healing on you becomes a shield",
+      "icon": "perk-images/Styles/Precision/Overheal/Overheal.png",
+      "styleId": 8000,
+      "slot": 1
+    },
+    {
+      "id": 9111,
+      "key": "Triumph",
+      "name": "Triumph",
+      "shortDesc": "Takedowns restore health and grant bonus gold",
+      "icon": "perk-images/Styles/Precision/Triumph/Triumph.png",
+      "styleId": 8000,
+      "slot": 1
+    },
+    {
+      "id": 8009,
+      "key": "PresenceOfMind",
+      "name": "Presence of Mind",
+      "shortDesc": "Damaging an enemy champion increases mana regeneration",
+      "icon": "perk-images/Styles/Precision/PresenceOfMind/PresenceOfMind.png",
+      "styleId": 8000,
+      "slot": 1
+    },
+    {
+      "id": 9104,
+      "key": "LegendAlacrity",
+      "name": "Legend: Alacrity",
+      "shortDesc": "Gain attack speed for each Legend stack",
+      "icon": "perk-images/Styles/Precision/LegendAlacrity/LegendAlacrity.png",
+      "styleId": 8000,
+      "slot": 2
+    },
+    {
+      "id": 9105,
+      "key": "LegendTenacity",
+      "name": "Legend: Tenacity",
+      "shortDesc": "Gain tenacity for each Legend stack",
+      "icon": "perk-images/Styles/Precision/LegendTenacity/LegendTenacity.png",
+      "styleId": 8000,
+      "slot": 2
+    },
+    {
+      "id": 9103,
+      "key": "LegendBloodline",
+      "name": "Legend: Bloodline",
+      "shortDesc": "Gain life steal for each Legend stack",
+      "icon": "perk-images/Styles/Precision/LegendBloodline/LegendBloodline.png",
+      "styleId": 8000,
+      "slot": 2
+    },
+    {
+      "id": 8014,
+      "key": "CoupDeGrace",
+      "name": "Coup de Grace",
+      "shortDesc": "Deal more damage to low health enemy champions",
+      "icon": "perk-images/Styles/Precision/CoupDeGrace/CoupDeGrace.png",
+      "styleId": 8000,
+      "slot": 3
+    },
+    {
+      "id": 8017,
+      "key": "CutDown",
+      "name": "Cut Down",
+      "shortDesc": "Deal more damage to champions with more max health than you",
+      "icon": "perk-images/Styles/Precision/CutDown/CutDown.png",
+      "styleId": 8000,
+      "slot": 3
+    },
+    {
+      "id": 8299,
+      "key": "LastStand",
+      "name": "Last Stand",
+      "shortDesc": "Deal more damage when you are low on health",
+      "icon": "perk-images/Styles/Precision/LastStand/LastStand.png",
+      "styleId": 8000,
+      "slot": 3
+    },
+    {
+      "id": 8112,
+      "key": "Electrocute",
+      "name": "Electrocute",
+      "shortDesc": "Hitting a champion with 3 separate attacks or abilities deals bonus damage",
+      "icon": "perk-images/Styles/Domination/Electrocute/Electrocute.png",
+      "styleId": 8100,
+      "slot": 0
+    },
+    {
+      "id": 8124,
+      "key": "Predator",
+      "name": "Predator",
+      "shortDesc": "Enchant your boots with active effect that grants movement speed",
+      "icon": "perk-images/Styles/Domination/Predator/Predator.png",
+      "styleId": 8100,
+      "slot": 0
+    },
+    {
+      "id": 8128,
+      "key": "DarkHarvest",
+      "name": "Dark Harvest",
+      "shortDesc": "Damaging low health champions deals adaptive damage and harvests their soul",
+      "icon": "perk-images/Styles/Domination/DarkHarvest/DarkHarvest.png",
+      "styleId": 8100,
+      "slot": 0
+    },
+    {
+      "id": 9923,
+      "key": "HailOfBlades",
+      "name": "Hail of Blades",
+      "shortDesc": "Gain attack speed when you attack an enemy champion",
+      "icon": "perk-images/Styles/Domination/HailOfBlades/HailOfBlades.png",
+      "styleId": 8100,
+      "slot": 0
+    },
+    {
+      "id": 8126,
+      "key": "CheapShot",
+      "name": "Cheap Shot",
+      "shortDesc": "Deal bonus true damage to champions with impaired movement",
+      "icon": "perk-images/Styles/Domination/CheapShot/CheapShot.png",
+      "styleId": 8100,
+      "slot": 1
+    },
+    {
+      "id": 8139,
+      "key": "TasteOfBlood",
+      "name": "Taste of Blood",
+      "shortDesc": "Heal when you damage an enemy champion",
+      "icon": "perk-images/Styles/Domination/TasteOfBlood/TasteOfBlood.png",
+      "styleId": 8100,
+      "slot": 1
+    },
+    {
+      "id": 8143,
+      "key": "SuddenImpact",
+      "name": "Sudden Impact",
+      "shortDesc": "Gain lethality and magic penetration after using a dash or blink",
+      "icon": "perk-images/Styles/Domination/SuddenImpact/SuddenImpact.png",
+      "styleId": 8100,
+      "slot": 1
+    },
+    {
+      "id": 8136,
+      "key": "ZombieWard",
+      "name": "Zombie Ward",
+      "shortDesc": "Takedowns on enemy wards spawn friendly Zombie Wards",
+      "icon": "perk-images/Styles/Domination/ZombieWard/ZombieWard.png",
+      "styleId": 8100,
+      "slot": 2
+    },
+    {
+      "id": 8120,
+      "key": "GhostPoro",
+      "name": "Ghost Poro",
+      "shortDesc": "When your wards expire, they leave behind a Ghost Poro",
+      "icon": "perk-images/Styles/Domination/GhostPoro/GhostPoro.png",
+      "styleId": 8100,
+      "slot": 2
+    },
+    {
+      "id": 8138,
+      "key": "EyeballCollection",
+      "name": "Eyeball Collection",
+      "shortDesc": "Collect eyeballs for champion takedowns. Gain adaptive force per eyeball",
+      "icon": "perk-images/Styles/Domination/EyeballCollection/EyeballCollection.png",
+      "styleId": 8100,
+      "slot": 2
+    },
+    {
+      "id": 8135,
+      "key": "TreasureHunter",
+      "name": "Treasure Hunter",
+      "shortDesc": "Gain additional gold for each unique takedown",
+      "icon": "perk-images/Styles/Domination/TreasureHunter/TreasureHunter.png",
+      "styleId": 8100,
+      "slot": 3
+    },
+    {
+      "id": 8134,
+      "key": "IngeniousHunter",
+      "name": "Ingenious Hunter",
+      "shortDesc": "Gain item haste for each unique takedown",
+      "icon": "perk-images/Styles/Domination/IngeniousHunter/IngeniousHunter.png",
+      "styleId": 8100,
+      "slot": 3
+    },
+    {
+      "id": 8105,
+      "key": "RelentlessHunter",
+      "name": "Relentless Hunter",
+      "shortDesc": "Gain movement speed for each unique takedown",
+      "icon": "perk-images/Styles/Domination/RelentlessHunter/RelentlessHunter.png",
+      "styleId": 8100,
+      "slot": 3
+    },
+    {
+      "id": 8106,
+      "key": "UltimateHunter",
+      "name": "Ultimate Hunter",
+      "shortDesc": "Gain ultimate ability haste for each unique takedown",
+      "icon": "perk-images/Styles/Domination/UltimateHunter/UltimateHunter.png",
+      "styleId": 8100,
+      "slot": 3
+    },
+    {
+      "id": 8229,
+      "key": "ArcaneComet",
+      "name": "Arcane Comet",
+      "shortDesc": "Damaging a champion with an ability hurls a comet at their location",
+      "icon": "perk-images/Styles/Sorcery/ArcaneComet/ArcaneComet.png",
+      "styleId": 8200,
+      "slot": 0
+    },
+    {
+      "id": 8230,
+      "key": "PhaseRush",
+      "name": "Phase Rush",
+      "shortDesc": "Hitting an enemy champion with 3 attacks or abilities grants movement speed",
+      "icon": "perk-images/Styles/Sorcery/PhaseRush/PhaseRush.png",
+      "styleId": 8200,
+      "slot": 0
+    },
+    {
+      "id": 8224,
+      "key": "NullifyingOrb",
+      "name": "Nullifying Orb",
+      "shortDesc": "Gain a magic damage shield when taken to low health by magic damage",
+      "icon": "perk-images/Styles/Sorcery/NullifyingOrb/Pokeshield.png",
+      "styleId": 8200,
+      "slot": 1
+    },
+    {
+      "id": 8275,
+      "key": "NimbusCloak",
+      "name": "Nimbus Cloak",
+      "shortDesc": "After casting a summoner spell, gain movement speed",
+      "icon": "perk-images/Styles/Sorcery/NimbusCloak/NimbusCloak.png",
+      "styleId": 8200,
+      "slot": 1
+    },
+    {
+      "id": 8234,
+      "key": "Celerity",
+      "name": "Celerity",
+      "shortDesc": "All movement speed bonuses are more effective",
+      "icon": "perk-images/Styles/Sorcery/Celerity/CelerityTemp.png",
+      "styleId": 8200,
+      "slot": 2
+    },
+    {
+      "id": 8233,
+      "key": "AbsoluteFocus",
+      "name": "Absolute Focus",
+      "shortDesc": "Gain adaptive force while above 70% health",
+      "icon": "perk-images/Styles/Sorcery/AbsoluteFocus/AbsoluteFocus.png",
+      "styleId": 8200,
+      "slot": 2
+    },
+    {
+      "id": 8232,
+      "key": "Waterwalking",
+      "name": "Waterwalking",
+      "shortDesc": "Gain movement speed and adaptive force when in the river",
+      "icon": "perk-images/Styles/Sorcery/Waterwalking/Waterwalking.png",
+      "styleId": 8200,
+      "slot": 3
+    },
+    {
+      "id": 8236,
+      "key": "GatheringStorm",
+      "name": "Gathering Storm",
+      "shortDesc": "Gain increasing amounts of adaptive force as the game goes on",
+      "icon": "perk-images/Styles/Sorcery/GatheringStorm/GatheringStorm.png",
+      "styleId": 8200,
+      "slot": 3
+    },
+    {
+      "id": 8351,
+      "key": "GlacialAugment",
+      "name": "Glacial Augment",
+      "shortDesc": "Immobilizing an enemy champion creates zones that slow enemies",
+      "icon": "perk-images/Styles/Inspiration/GlacialAugment/GlacialAugment.png",
+      "styleId": 8300,
+      "slot": 0
+    },
+    {
+      "id": 8360,
+      "key": "UnsealedSpellbook",
+      "name": "Unsealed Spellbook",
+      "shortDesc": "Swap summoner spells while out of combat",
+      "icon": "perk-images/Styles/Inspiration/UnsealedSpellbook/UnsealedSpellbook.png",
+      "styleId": 8300,
+      "slot": 0
+    },
+    {
+      "id": 8369,
+      "key": "FirstStrike",
+      "name": "First Strike",
+      "shortDesc": "Striking first grants bonus gold and damage",
+      "icon": "perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png",
+      "styleId": 8300,
+      "slot": 0
+    },
+    {
+      "id": 8306,
+      "key": "HextechFlashtraption",
+      "name": "Hextech Flashtraption",
+      "shortDesc": "Channel to blink to a new location",
+      "icon": "perk-images/Styles/Inspiration/HextechFlashtraption/HextechFlashtraption.png",
+      "styleId": 8300,
+      "slot": 1
+    },
+    {
+      "id": 8304,
+      "key": "MagicalFootwear",
+      "name": "Magical Footwear",
+      "shortDesc": "Get free boots at 12 min but cannot buy boots before then",
+      "icon": "perk-images/Styles/Inspiration/MagicalFootwear/MagicalFootwear.png",
+      "styleId": 8300,
+      "slot": 1
+    },
+    {
+      "id": 8313,
+      "key": "PerfectTiming",
+      "name": "Perfect Timing",
+      "shortDesc": "Get a free Stopwatch at 14 min",
+      "icon": "perk-images/Styles/Inspiration/PerfectTiming/PerfectTiming.png",
+      "styleId": 8300,
+      "slot": 2
+    },
+    {
+      "id": 8321,
+      "key": "FuturesMarket",
+      "name": "Future's Market",
+      "shortDesc": "You can enter debt to buy items",
+      "icon": "perk-images/Styles/Inspiration/FuturesMarket/FuturesMarket.png",
+      "styleId": 8300,
+      "slot": 2
+    },
+    {
+      "id": 8316,
+      "key": "MinionDematerializer",
+      "name": "Minion Dematerializer",
+      "shortDesc": "Start with 3 Dematerializers that kill minions instantly",
+      "icon": "perk-images/Styles/Inspiration/MinionDematerializer/MinionDematerializer.png",
+      "styleId": 8300,
+      "slot": 2
+    },
+    {
+      "id": 8410,
+      "key": "ApproachVelocity",
+      "name": "Approach Velocity",
+      "shortDesc": "Gain movement speed towards nearby ally champions that are movement impaired",
+      "icon": "perk-images/Styles/Inspiration/ApproachVelocity/ApproachVelocity.png",
+      "styleId": 8300,
+      "slot": 3
+    },
+    {
+      "id": 8352,
+      "key": "TimeWarpTonic",
+      "name": "Time Warp Tonic",
+      "shortDesc": "Potions and biscuits grant movement speed",
+      "icon": "perk-images/Styles/Inspiration/TimeWarpTonic/TimeWarpTonic.png",
+      "styleId": 8300,
+      "slot": 3
+    },
+    {
+      "id": 8437,
+      "key": "GraspOfTheUndying",
+      "name": "Grasp of the Undying",
+      "shortDesc": "Every 4s in combat, your next attack on a champion deals bonus damage and heals you",
+      "icon": "perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png",
+      "styleId": 8400,
+      "slot": 0
+    },
+    {
+      "id": 8439,
+      "key": "Aftershock",
+      "name": "Aftershock",
+      "shortDesc": "After immobilizing an enemy champion, gain defenses and later deal damage",
+      "icon": "perk-images/Styles/Resolve/VeteranAftershock/VeteranAftershock.png",
+      "styleId": 8400,
+      "slot": 0
+    },
+    {
+      "id": 8465,
+      "key": "Guardian",
+      "name": "Guardian",
+      "shortDesc": "Guard allies you cast spells on and those that are very nearby",
+      "icon": "perk-images/Styles/Resolve/Guardian/Guardian.png",
+      "styleId": 8400,
+      "slot": 0
+    },
+    {
+      "id": 8446,
+      "key": "Demolish",
+      "name": "Demolish",
+      "shortDesc": "Charge up a powerful attack against a tower",
+      "icon": "perk-images/Styles/Resolve/Demolish/Demolish.png",
+      "styleId": 8400,
+      "slot": 1
+    },
+    {
+      "id": 8463,
+      "key": "FontOfLife",
+      "name": "Font of Life",
+      "shortDesc": "Impairing enemy champions marks them. Allies heal when attacking marked champions",
+      "icon": "perk-images/Styles/Resolve/FontOfLife/FontOfLife.png",
+      "styleId": 8400,
+      "slot": 1
+    },
+    {
+      "id": 8401,
+      "key": "ShieldBash",
+      "name": "Shield Bash",
+      "shortDesc": "Gain bonus resistances while shielded. Your next attack after gaining a shield deals bonus damage",
+      "icon": "perk-images/Styles/Resolve/MirrorShell/MirrorShell.png",
+      "styleId": 8400,
+      "slot": 1
+    },
+    {
+      "id": 8429,
+      "key": "Conditioning",
+      "name": "Conditioning",
+      "shortDesc": "After 12 min gain bonus armor and magic resist",
+      "icon": "perk-images/Styles/Resolve/Conditioning/Conditioning.png",
+      "styleId": 8400,
+      "slot": 2
+    },
+    {
+      "id": 8444,
+      "key": "SecondWind",
+      "name": "Second Wind",
+      "shortDesc": "After taking damage from an enemy champion, heal back some missing health",
+      "icon": "perk-images/Styles/Resolve/SecondWind/SecondWind.png",
+      "styleId": 8400,
+      "slot": 2
+    },
+    {
+      "id": 8473,
+      "key": "BonePlating",
+      "name": "Bone Plating",
+      "shortDesc": "After taking damage from a champion, reduce subsequent damage from them",
+      "icon": "perk-images/Styles/Resolve/BonePlating/BonePlating.png",
+      "styleId": 8400,
+      "slot": 2
+    },
+    {
+      "id": 8451,
+      "key": "Overgrowth",
+      "name": "Overgrowth",
+      "shortDesc": "Absorb life essence from monsters or enemy minions that die near you, permanently gaining health",
+      "icon": "perk-images/Styles/Resolve/Overgrowth/Overgrowth.png",
+      "styleId": 8400,
+      "slot": 3
+    },
+    {
+      "id": 8453,
+      "key": "Revitalize",
+      "name": "Revitalize",
+      "shortDesc": "Heals and shields are stronger and increased on low health targets",
+      "icon": "perk-images/Styles/Resolve/Revitalize/Revitalize.png",
+      "styleId": 8400,
+      "slot": 3
+    },
+    {
+      "id": 8242,
+      "key": "Unflinching",
+      "name": "Unflinching",
+      "shortDesc": "Gain tenacity and slow resist based on missing health",
+      "icon": "perk-images/Styles/Sorcery/Unflinching/Unflinching.png",
+      "styleId": 8400,
+      "slot": 3
+    }
+  ],
+  "styleMetadata": [
+    {
+      "id": 8000,
+      "key": "Precision",
+      "name": "Precision",
+      "icon": "perk-images/Styles/7201_Precision.png",
+      "slots": [
+        [8005, 8008, 8021, 8010],
+        [9101, 9111, 8009],
+        [9104, 9105, 9103],
+        [8014, 8017, 8299]
+      ]
+    },
+    {
+      "id": 8100,
+      "key": "Domination",
+      "name": "Domination",
+      "icon": "perk-images/Styles/7200_Domination.png",
+      "slots": [
+        [8112, 8124, 8128, 9923],
+        [8126, 8139, 8143],
+        [8136, 8120, 8138],
+        [8135, 8134, 8105, 8106]
+      ]
+    },
+    {
+      "id": 8200,
+      "key": "Sorcery",
+      "name": "Sorcery",
+      "icon": "perk-images/Styles/7202_Sorcery.png",
+      "slots": [
+        [8214, 8229, 8230],
+        [8224, 8226, 8275],
+        [8210, 8234, 8233],
+        [8237, 8232, 8236]
+      ]
+    },
+    {
+      "id": 8300,
+      "key": "Inspiration",
+      "name": "Inspiration",
+      "icon": "perk-images/Styles/7203_Whimsy.png",
+      "slots": [
+        [8351, 8360, 8369],
+        [8306, 8304, 8345],
+        [8313, 8321, 8316],
+        [8347, 8410, 8352]
+      ]
+    },
+    {
+      "id": 8400,
+      "key": "Resolve",
+      "name": "Resolve",
+      "icon": "perk-images/Styles/7204_Resolve.png",
+      "slots": [
+        [8437, 8439, 8465],
+        [8446, 8463, 8401],
+        [8429, 8444, 8473],
+        [8451, 8453, 8242]
+      ]
+    }
+  ]
+}

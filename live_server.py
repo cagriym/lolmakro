@@ -1,6 +1,10 @@
 import asyncio
+import json
 import os
+import secrets
+import sqlite3
 import time
+import uuid
 from contextlib import asynccontextmanager
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -11,7 +15,7 @@ from urllib.parse import quote
 import httpx
 from fastapi import FastAPI, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -1328,6 +1332,64 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ---------------------------------------------------------------------------
+# Multi-user site DB (PC registration, token, pairing)
+# ---------------------------------------------------------------------------
+SITE_DB_PATH = Path(__file__).resolve().parent / "data" / "lolmakro.db"
+
+
+def _get_site_db() -> sqlite3.Connection:
+    SITE_DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    conn = sqlite3.connect(str(SITE_DB_PATH))
+    conn.row_factory = sqlite3.Row
+    conn.execute("PRAGMA journal_mode=WAL")
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS pcs (
+            device_id TEXT PRIMARY KEY,
+            remote_url TEXT NOT NULL,
+            pc_name TEXT DEFAULT '',
+            created_at TEXT DEFAULT (datetime('now')),
+            last_seen TEXT DEFAULT (datetime('now'))
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS tokens (
+            token TEXT PRIMARY KEY,
+            device_id TEXT NOT NULL,
+            purpose TEXT NOT NULL DEFAULT 'pair',
+            expires_at TEXT NOT NULL,
+            used INTEGER DEFAULT 0,
+            created_at TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (device_id) REFERENCES pcs(device_id)
+        )
+    """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS pairings (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            device_id TEXT NOT NULL,
+            mobile_id TEXT NOT NULL,
+            paired_at TEXT DEFAULT (datetime('now')),
+            FOREIGN KEY (device_id) REFERENCES pcs(device_id)
+        )
+    """)
+    conn.commit()
+    return conn
+
+
+def _site_token() -> str:
+    return secrets.token_hex(32)
+
+
+def _site_device_id() -> str:
+    return "pc_" + uuid.uuid4().hex[:16]
+
+
+def _site_mobile_id() -> str:
+    return "mob_" + uuid.uuid4().hex[:16]
+
+
+# ---------------------------------------------------------------------------
+
 
 @app.get("/api/state")
 async def api_state() -> dict[str, Any]:
@@ -1955,6 +2017,116 @@ async def websocket_state(websocket: WebSocket) -> None:
 async def health() -> dict[str, Any]:
     return {"ok": True, "timestamp": datetime.now(timezone.utc).isoformat()}
 
+# ---------------------------------------------------------------------------
+# Site API — PC registration, token, pairing, APK version
+# ---------------------------------------------------------------------------
+
+@app.post("/api/pc/register")
+async def site_pc_register(request: Request) -> JSONResponse:
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON")
+    remote_url = body.get("remote_url")
+    if not remote_url:
+        raise HTTPException(status_code=400, detail="remote_url required")
+    device_id = body.get("device_id") or _site_device_id()
+    pc_name = body.get("pc_name", "")
+    conn = _get_site_db()
+    existing = conn.execute("SELECT device_id FROM pcs WHERE device_id = ?", (device_id,)).fetchone()
+    if existing:
+        conn.execute("UPDATE pcs SET remote_url = ?, pc_name = COALESCE(?, pc_name), last_seen = datetime('now') WHERE device_id = ?", (remote_url, pc_name, device_id))
+    else:
+        conn.execute("INSERT INTO pcs (device_id, remote_url, pc_name) VALUES (?, ?, ?)", (device_id, remote_url, pc_name))
+    conn.commit()
+    conn.close()
+    return JSONResponse({"status": "ok", "device_id": device_id})
+
+
+@app.post("/api/pc/token")
+async def site_pc_token(request: Request) -> JSONResponse:
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON")
+    device_id = body.get("device_id")
+    if not device_id:
+        raise HTTPException(status_code=400, detail="device_id required")
+    conn = _get_site_db()
+    pc = conn.execute("SELECT device_id FROM pcs WHERE device_id = ?", (device_id,)).fetchone()
+    if not pc:
+        conn.close()
+        raise HTTPException(status_code=404, detail="PC not registered")
+    token = _site_token()
+    expires_at = datetime.now(timezone.utc).isoformat()  # +10m simplified
+    conn.execute("INSERT INTO tokens (token, device_id, purpose, expires_at) VALUES (?, ?, 'pair', datetime('now', '+10 minutes'))", (token, device_id))
+    conn.commit()
+    conn.close()
+    return JSONResponse({"status": "ok", "token": token})
+
+
+@app.post("/api/mobile/pair")
+async def site_mobile_pair(request: Request) -> JSONResponse:
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON")
+    token = body.get("token")
+    if not token:
+        raise HTTPException(status_code=400, detail="token required")
+    mobile_id = body.get("mobile_id") or _site_mobile_id()
+    conn = _get_site_db()
+    row = conn.execute(
+        "SELECT t.*, p.remote_url, p.pc_name FROM tokens t JOIN pcs p ON p.device_id = t.device_id WHERE t.token = ? AND t.used = 0 AND t.expires_at > datetime('now')",
+        (token,)
+    ).fetchone()
+    if not row:
+        used = conn.execute("SELECT used FROM tokens WHERE token = ?", (token,)).fetchone()
+        msg = "Token already used" if used else "Token invalid or expired"
+        conn.close()
+        raise HTTPException(status_code=401, detail=msg)
+    device_id = row["device_id"]
+    remote_url = row["remote_url"]
+    pc_name = row["pc_name"]
+    conn.execute("UPDATE tokens SET used = 1 WHERE token = ?", (token,))
+    conn.execute("INSERT OR IGNORE INTO pairings (device_id, mobile_id) VALUES (?, ?)", (device_id, mobile_id))
+    conn.commit()
+    conn.close()
+    return JSONResponse({"status": "ok", "device_id": device_id, "remote_url": remote_url, "pc_name": pc_name, "mobile_id": mobile_id})
+
+
+@app.get("/api/pair-qr")
+async def site_pair_qr(request: Request) -> JSONResponse:
+    conn = _get_site_db()
+    row = conn.execute("SELECT device_id, remote_url FROM pcs ORDER BY rowid DESC LIMIT 1").fetchone()
+    if not row:
+        conn.close()
+        raise HTTPException(status_code=404, detail="Kayitli PC bulunamadi. Uygulamayi PC'nde calistir.")
+    device_id = row["device_id"]
+    remote_url = row["remote_url"]
+    token = _site_token()
+    conn.execute("INSERT INTO tokens (token, device_id, purpose, expires_at) VALUES (?, ?, 'pair', datetime('now', '+10 minutes'))", (token, device_id))
+    conn.commit()
+    conn.close()
+    site_origin = os.environ.get("NEXT_PUBLIC_SITE_URL", "").rstrip("/") or str(request.base_url).rstrip("/")
+    qr_url = f"{site_origin}/qrcode?token={quote(token)}"
+    return JSONResponse({"status": "ok", "token": token, "qr_url": qr_url, "remote_url": remote_url})
+
+
+@app.get("/api/latestapk")
+async def site_latest_apk() -> JSONResponse:
+    ver_path = Path(__file__).resolve().parent / "site" / "public" / "apk" / "version.json"
+    if ver_path.exists():
+        try:
+            data = json.loads(ver_path.read_text(encoding="utf-8"))
+            return JSONResponse(data)
+        except Exception:
+            pass
+    return JSONResponse({"version": "0.0.0", "error": "Version info not found"})
+
+
+# ---------------------------------------------------------------------------
+
 @app.get("/api/mobile/session")
 async def mobile_session_state(request: Request) -> dict[str, Any]:
     # Minimal mobile session gate check. Pairing route sets lolsiken_pair cookie.
@@ -2052,8 +2224,15 @@ async def mobile_connect(
     return HTMLResponse(content=html)
 
 
-# No static frontend mounted here — mobile-panel has been moved to Expo.
-# The Next.js site/ is deployed separately on Vercel.
+# Mount Next.js static export (site/out/) — serves /qrcode, /, and static assets
+next_out = Path(__file__).resolve().parent / "site" / "out"
+if next_out.exists():
+    app.mount("/", StaticFiles(directory=str(next_out), html=True), name="next-static")
+
+# Mount site/public/ for APK downloads and version info
+site_public = Path(__file__).resolve().parent / "site" / "public"
+if site_public.exists():
+    app.mount("/apk", StaticFiles(directory=str(site_public / "apk")), name="apk-files")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,161 @@
+/* ViewRunesButton styles - League of Legends aesthetic */
+
+.view-runes-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1000;
+  pointer-events: none;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.view-runes-button {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  
+  /* League of Legends style */
+  background: linear-gradient(
+    135deg,
+    #1e2328 0%,
+    #0a1428 100%
+  );
+  border: 2px solid #c89b3c;
+  border-radius: 8px;
+  
+  /* Typography */
+  font-family: "Sora", "Segoe UI", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #f0e6d2;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  /* Spacing */
+  padding: 16px 24px;
+  min-height: 56px;
+  
+  /* Interaction */
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.2s ease;
+  
+  /* Shadow */
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(200, 155, 60, 0.3);
+}
+
+.view-runes-button:hover {
+  background: linear-gradient(
+    135deg,
+    #2a3038 0%,
+    #0f1c38 100%
+  );
+  border-color: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(212, 175, 55, 0.4),
+    0 0 20px rgba(200, 155, 60, 0.3);
+}
+
+.view-runes-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(200, 155, 60, 0.2);
+}
+
+.view-runes-icon {
+  font-size: 24px;
+  filter: drop-shadow(0 0 8px rgba(200, 155, 60, 0.6));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+.view-runes-text {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Touch optimization for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .view-runes-button {
+    min-height: 60px;
+    font-size: 16px;
+  }
+  
+  .view-runes-button:active {
+    background: linear-gradient(
+      135deg,
+      #2a3038 0%,
+      #0f1c38 100%
+    );
+    border-color: #d4af37;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 560px) {
+  .view-runes-button-container {
+    padding: 12px;
+  }
+  
+  .view-runes-button {
+    font-size: 16px;
+    padding: 14px 20px;
+    gap: 10px;
+  }
+  
+  .view-runes-icon {
+    font-size: 20px;
+  }
+}
+
+/* Accessibility - reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .view-runes-button-container {
+    animation: none;
+  }
+  
+  .view-runes-icon {
+    animation: none;
+  }
+  
+  .view-runes-button {
+    transition: none;
+  }
+}

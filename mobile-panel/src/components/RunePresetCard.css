@@ -1,0 +1,276 @@
+/* RunePresetCard styles - League of Legends aesthetic */
+
+.rune-preset-card {
+  background: linear-gradient(135deg, #0a1428 0%, #1e2328 100%);
+  border: 2px solid #3c3c41;
+  border-radius: 12px;
+  padding: 16px;
+  min-width: 280px;
+  max-width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rune-preset-card:hover {
+  border-color: #785a28;
+  box-shadow: 0 6px 16px rgba(200, 155, 60, 0.3);
+  transform: translateY(-2px);
+}
+
+.rune-preset-card.active {
+  border-color: #c89b3c;
+  box-shadow: 0 6px 20px rgba(200, 155, 60, 0.5);
+  background: linear-gradient(135deg, #1a2838 0%, #2e3338 100%);
+}
+
+/* Header */
+.preset-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.preset-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f0e6d2;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.preset-slot-label {
+  font-size: 12px;
+  color: #c89b3c;
+  background: rgba(200, 155, 60, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* Rune Sections */
+.rune-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.primary-section {
+  border-left: 3px solid #c89b3c;
+}
+
+.secondary-section {
+  border-left: 3px solid #5b7c99;
+}
+
+/* Style Header */
+.style-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.style-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+}
+
+.style-icon-placeholder {
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.style-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #a09b8c;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Keystone */
+.keystone-container {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.keystone-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(200, 155, 60, 0.6));
+  transition: transform 0.2s ease;
+}
+
+.keystone-icon:hover {
+  transform: scale(1.1);
+}
+
+.keystone-icon-placeholder {
+  width: 56px;
+  height: 56px;
+  background: rgba(200, 155, 60, 0.2);
+  border-radius: 50%;
+  border: 2px solid rgba(200, 155, 60, 0.4);
+}
+
+/* Perks Row */
+.perks-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.perk-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.perk-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+  transition: transform 0.2s ease;
+}
+
+.perk-icon:hover {
+  transform: scale(1.15);
+}
+
+.perk-icon-placeholder {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Stat Shards */
+.stat-shards-section {
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-shards-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.stat-shard-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-shard-placeholder {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Apply Button */
+.apply-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(180deg, #c89b3c 0%, #a17a2a 100%);
+  border: 2px solid #785a28;
+  border-radius: 8px;
+  color: #0a1428;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  margin-top: 8px;
+}
+
+.apply-button:hover:not(:disabled) {
+  background: linear-gradient(180deg, #d4af37 0%, #b8892a 100%);
+  border-color: #c89b3c;
+  box-shadow: 0 6px 12px rgba(200, 155, 60, 0.6);
+  transform: translateY(-2px);
+}
+
+.apply-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.apply-button:disabled {
+  background: linear-gradient(180deg, #5b7c99 0%, #4a6378 100%);
+  border-color: #3c5266;
+  color: #1e2328;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.apply-button.applied {
+  background: linear-gradient(180deg, #5b7c99 0%, #4a6378 100%);
+  border-color: #3c5266;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .rune-preset-card {
+    min-width: 260px;
+    max-width: 300px;
+    padding: 14px;
+  }
+
+  .preset-name {
+    font-size: 15px;
+  }
+
+  .keystone-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .keystone-icon-placeholder {
+    width: 48px;
+    height: 48px;
+  }
+
+  .perk-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .perk-icon-placeholder {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Touch optimization */
+@media (hover: none) and (pointer: coarse) {
+  .apply-button {
+    min-height: 44px;
+    padding: 14px;
+  }
+
+  .rune-preset-card:active {
+    transform: scale(0.98);
+  }
+}

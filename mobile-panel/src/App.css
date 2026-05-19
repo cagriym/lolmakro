@@ -1,0 +1,46 @@
+/* Main App Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #0a1428;
+  color: #fff;
+}
+
+.app {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Waiting Screen */
+.waiting-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #0a1428 0%, #1a2332 100%);
+  padding: 20px;
+  text-align: center;
+}
+
+.waiting-screen h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #c8aa6e;
+}
+
+.waiting-screen p {
+  font-size: 16px;
+  color: #a09b8c;
+}
