@@ -1,0 +1,36 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+
+# Build artifacts
+build/
+dist/
+*.spec
+
+# Runtime/generated files
+temp_capture.png
+config.json
+
+# IDE/OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+
+# Installer binaries (too large for git)
+installer/
+
+
+# Next.js site
+site/node_modules/
+site/.next/
+
+# Development specs
+.kiro/
