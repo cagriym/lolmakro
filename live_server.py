@@ -15,7 +15,7 @@ from urllib.parse import quote
 import httpx
 from fastapi import FastAPI, HTTPException, Query, Request, Response, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -2115,22 +2115,16 @@ async def site_pair_qr(request: Request) -> JSONResponse:
 
 @app.get("/api/latestapk")
 async def site_latest_apk() -> JSONResponse:
-    ver_path = Path(__file__).resolve().parent / "site" / "public" / "apk" / "version.json"
+    ver_path = Path(__file__).resolve().parent / "site" / "public" / "apps" / "version.json"
     if ver_path.exists():
         try:
             data = json.loads(ver_path.read_text(encoding="utf-8"))
+            data["download_url"] = "/apps/app-release.apk"
             return JSONResponse(data)
         except Exception:
             pass
-    return JSONResponse({"version": "0.0.0", "error": "Version info not found"})
+    return JSONResponse({"version": "0.0.0", "error": "Version info not found", "download_url": ""})
 
-
-@app.get("/latestapk")
-async def site_latest_apk_download() -> RedirectResponse:
-    """Redirect to the latest APK file for easy sharing/download."""
-    site_origin = os.environ.get("NEXT_PUBLIC_SITE_URL", "").rstrip("/") or ""
-    apk_url = f"{site_origin}/apk/app-release.apk"
-    return RedirectResponse(url=apk_url)
 
 
 # ---------------------------------------------------------------------------
@@ -2232,15 +2226,52 @@ async def mobile_connect(
     return HTMLResponse(content=html)
 
 
-# Mount Next.js static export (site/out/) — serves /qrcode, /, and static assets
-next_out = Path(__file__).resolve().parent / "site" / "out"
-if next_out.exists():
-    app.mount("/", StaticFiles(directory=str(next_out), html=True), name="next-static")
+# Serve Next.js static assets and APK files
+_next_static = Path(__file__).resolve().parent / "site" / "out" / "_next" / "static"
+if _next_static.exists():
+    app.mount("/_next/static", StaticFiles(directory=str(_next_static)), name="next-static")
 
-# Mount site/public/ for APK downloads and version info
-site_public = Path(__file__).resolve().parent / "site" / "public"
-if site_public.exists():
-    app.mount("/apk", StaticFiles(directory=str(site_public / "apk")), name="apk-files")
+_site_public = Path(__file__).resolve().parent / "site" / "public"
+
+_out_root = Path(__file__).resolve().parent / "site" / "out"
+
+_html_cache: dict[str, str] = {}
+if _out_root.exists():
+    for f in _out_root.iterdir():
+        if f.suffix == ".html":
+            name = "index" if f.stem == "index" else f.stem
+            _html_cache[name] = f.read_text(encoding="utf-8")
+
+
+@app.get("/")
+async def next_index() -> HTMLResponse:
+    return HTMLResponse(content=_html_cache.get("index", "<h1>LoL Makro</h1>"))
+
+
+@app.get("/qrcode")
+async def next_qrcode() -> HTMLResponse:
+    return HTMLResponse(content=_html_cache.get("qrcode", "<h1>QR Code</h1>"))
+
+
+@app.get("/apps")
+async def apps_landing() -> HTMLResponse:
+    apps_index = Path(__file__).resolve().parent / "site" / "public" / "apps" / "index.html"
+    if apps_index.exists():
+        return HTMLResponse(content=apps_index.read_text(encoding="utf-8"))
+    return HTMLResponse(content="<h1>Uygulamalar</h1><p>Henuz yuklenmedi.</p>")
+
+
+_apps_dir = Path(__file__).resolve().parent / "site" / "public" / "apps"
+
+
+@app.get("/apps/{file_path:path}")
+async def apps_static(file_path: str) -> FileResponse:
+    target = (_apps_dir / file_path).resolve()
+    if not str(target).startswith(str(_apps_dir.resolve())):
+        raise HTTPException(status_code=404)
+    if target.exists() and target.is_file():
+        return FileResponse(path=str(target))
+    raise HTTPException(status_code=404)
 
 
 if __name__ == "__main__":

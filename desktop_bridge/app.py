@@ -178,8 +178,9 @@ class DesktopBridgeApp:
     def _download_apk(self) -> None:
         site_url = self._get_site_url()
         if site_url:
-            import webbrowser
-            webbrowser.open(f"{site_url}/latestapk")
+            apk_url = f"{site_url}/apps/app-release.apk"
+            self.qr_window.show_loading("APK indirme QR kodu hazirlaniyor...")
+            self.qr_window.show(apk_url)
 
     def _show_qr(self) -> None:
         try:
