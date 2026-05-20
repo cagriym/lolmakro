@@ -2267,12 +2267,32 @@ async def next_qrcode() -> HTMLResponse:
     return HTMLResponse(content=_html_cache.get("qrcode", "<h1>QR Code</h1>"))
 
 
+def _format_size(path: Path) -> str:
+    try:
+        size = path.stat().st_size
+        if size < 1024:
+            return f"{size} B"
+        elif size < 1024 * 1024:
+            return f"{size / 1024:.0f} KB"
+        else:
+            return f"{size / (1024 * 1024):.0f} MB"
+    except OSError:
+        return "—"
+
+
 @app.get("/apps/")
 @app.get("/apps")
 async def apps_landing() -> HTMLResponse:
     apps_index = Path(__file__).resolve().parent / "site" / "public" / "apps" / "index.html"
     if apps_index.exists():
-        return HTMLResponse(content=apps_index.read_text(encoding="utf-8"))
+        html = apps_index.read_text(encoding="utf-8")
+        apk_path = _apps_dir / "app-release.apk"
+        exe_path = _apps_dir / "LolMakroBridgeSetup.exe"
+        if not exe_path.exists():
+            exe_path = _apps_dir / "LolMakroBridge.exe"
+        html = html.replace("{{APK_SIZE}}", f"~{_format_size(apk_path)}")
+        html = html.replace("{{EXE_SIZE}}", f"~{_format_size(exe_path)}")
+        return HTMLResponse(content=html)
     return HTMLResponse(content="<h1>Uygulamalar</h1><p>Henuz yuklenmedi.</p>")
 
 
