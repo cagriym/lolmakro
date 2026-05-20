@@ -19,7 +19,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Redirect
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from desktop_bridge.security import token_manager
+from desktop_bridge.security import session_manager, token_manager
 
 
 @dataclass
@@ -2002,6 +2002,10 @@ async def api_apply_runes(payload: RunePayload) -> Any:
 
 @app.websocket("/ws")
 async def websocket_state(websocket: WebSocket) -> None:
+    session_token = websocket.query_params.get("session_token")
+    if not session_token or not session_manager.validate(session_token):
+        await websocket.close(code=4001, reason="session_token required")
+        return
     await ws_manager.connect(websocket)
     try:
         await websocket.send_json(state_cache)
@@ -2092,7 +2096,8 @@ async def site_mobile_pair(request: Request) -> JSONResponse:
     conn.execute("INSERT OR IGNORE INTO pairings (device_id, mobile_id) VALUES (?, ?)", (device_id, mobile_id))
     conn.commit()
     conn.close()
-    return JSONResponse({"status": "ok", "device_id": device_id, "remote_url": remote_url, "pc_name": pc_name, "mobile_id": mobile_id})
+    session_token = session_manager.create_session(device_id)
+    return JSONResponse({"status": "ok", "device_id": device_id, "remote_url": remote_url, "pc_name": pc_name, "mobile_id": mobile_id, "session_token": session_token})
 
 
 @app.get("/api/pair-qr")
@@ -2129,9 +2134,18 @@ async def site_latest_apk() -> JSONResponse:
 
 # ---------------------------------------------------------------------------
 
+def _require_session(request: Request) -> str | None:
+    token = request.headers.get("x-session-token") or request.query_params.get("session_token")
+    if token:
+        return session_manager.validate(token)
+    return None
+
+
 @app.get("/api/mobile/session")
 async def mobile_session_state(request: Request) -> dict[str, Any]:
-    # Minimal mobile session gate check. Pairing route sets lolsiken_pair cookie.
+    device_id = _require_session(request)
+    if device_id:
+        return {"paired": True, "device_id": device_id}
     return {"paired": request.cookies.get("lolsiken_pair") == "ok"}
 
 @app.get("/mobile/pair")

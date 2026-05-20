@@ -28,7 +28,8 @@ class DesktopBridgeApp:
         self.settings = settings
         root = Path(__file__).resolve().parent.parent
         cloudflared = os.environ.get("LOL_BRIDGE_CLOUDFLARED_PATH", str(root / "cloudflared.exe"))
-        self.tunnel = TunnelManager(cloudflared_path=cloudflared, target_url=f"http://127.0.0.1:{settings.backend_port}")
+        tunnel_name = os.environ.get("LOL_BRIDGE_TUNNEL_NAME") or None
+        self.tunnel = TunnelManager(cloudflared_path=cloudflared, target_url=f"http://127.0.0.1:{settings.backend_port}", tunnel_name=tunnel_name)
 
         icon_abs = Path(settings.icon_path)
         if not icon_abs.is_absolute():
@@ -55,7 +56,16 @@ class DesktopBridgeApp:
             if "localhost" in lowered or "127.0.0.1" in lowered:
                 raise RuntimeError("LOL_BRIDGE_PUBLIC_URL localhost olamaz. Cloudflare public domain kullanin.")
             return normalized
-        raise RuntimeError("Remote URL tanimli degil. .env icine LOL_BRIDGE_PUBLIC_URL=https://<subdomain>.<domain> ekleyin.")
+        tunnel_name = os.environ.get("LOL_BRIDGE_TUNNEL_NAME")
+        if tunnel_name:
+            self.tunnel.start()
+            url = self.tunnel.public_url
+            if url:
+                return url
+            raise RuntimeError(f"Tunnel {tunnel_name} baslatilamadi.")
+        if self.tunnel.is_running and self.tunnel.public_url:
+            return self.tunnel.public_url
+        return self.tunnel.start()
 
     def _get_site_url(self) -> str | None:
         value = os.environ.get("NEXT_PUBLIC_SITE_URL", "").strip().rstrip("/")

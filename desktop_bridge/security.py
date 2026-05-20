@@ -46,3 +46,46 @@ class PairingTokenManager:
 
 
 token_manager = PairingTokenManager(ttl_seconds=600)
+
+
+@dataclass
+class SessionRecord:
+    device_id: str
+    created_at: float
+    last_seen: float
+
+
+class SessionTokenManager:
+    def __init__(self) -> None:
+        self._sessions: dict[str, SessionRecord] = {}
+        self._lock = threading.Lock()
+
+    def create_session(self, device_id: str) -> str:
+        token = secrets.token_urlsafe(32)
+        now = time.time()
+        with self._lock:
+            self._sessions[token] = SessionRecord(
+                device_id=device_id, created_at=now, last_seen=now
+            )
+        return token
+
+    def validate(self, token: str) -> str | None:
+        with self._lock:
+            rec = self._sessions.get(token)
+            if not rec:
+                return None
+            rec.last_seen = time.time()
+            return rec.device_id
+
+    def revoke(self, token: str) -> None:
+        with self._lock:
+            self._sessions.pop(token, None)
+
+    def revoke_device(self, device_id: str) -> None:
+        with self._lock:
+            stale = [t for t, r in self._sessions.items() if r.device_id == device_id]
+            for t in stale:
+                self._sessions.pop(t, None)
+
+
+session_manager = SessionTokenManager()

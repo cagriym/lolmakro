@@ -14,9 +14,10 @@ CF_URL_RE = re.compile(r"https://[a-z0-9-]+\.trycloudflare\.com")
 
 
 class TunnelManager:
-    def __init__(self, cloudflared_path: str, target_url: str) -> None:
+    def __init__(self, cloudflared_path: str, target_url: str, tunnel_name: str | None = None) -> None:
         self.cloudflared_path = cloudflared_path
         self.target_url = target_url
+        self.tunnel_name = tunnel_name
         self._proc: subprocess.Popen[str] | None = None
         self._public_url: str | None = None
         self._lock = threading.Lock()
@@ -37,6 +38,12 @@ class TunnelManager:
     def last_error(self) -> str | None:
         return self._last_error
 
+    def _build_args(self) -> list[str]:
+        exe = str(Path(self.cloudflared_path))
+        if self.tunnel_name:
+            return [exe, "tunnel", "run", self.tunnel_name]
+        return [exe, "tunnel", "--url", self.target_url, "--no-autoupdate"]
+
     def start(self, timeout_seconds: int = 20) -> str:
         with self._lock:
             self._log("start requested")
@@ -48,7 +55,7 @@ class TunnelManager:
             if not exe.exists():
                 self._log(f"cloudflared missing, downloading to {exe}")
                 self._download_cloudflared(exe)
-            self._log(f"cloudflared path={exe} target={self.target_url}")
+            self._log(f"cloudflared path={exe} target={self.target_url} tunnel_name={self.tunnel_name}")
 
             max_attempts = 3
             for attempt in range(1, max_attempts + 1):
@@ -58,7 +65,7 @@ class TunnelManager:
                 self._last_error = None
 
                 self._proc = subprocess.Popen(
-                    [str(exe), "tunnel", "--url", self.target_url, "--no-autoupdate"],
+                    self._build_args(),
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     stdin=subprocess.DEVNULL,
@@ -145,6 +152,9 @@ class TunnelManager:
             if matched:
                 self._public_url = matched.group(0)
                 self._log(f"url discovered: {self._public_url}")
+            if self.tunnel_name and "connection" in line.lower() and "registered" in line.lower():
+                self._public_url = f"https://{self.tunnel_name}"
+                self._log(f"named tunnel url: {self._public_url}")
             if "ERR" in line.upper():
                 self._last_error = line.strip()
 
