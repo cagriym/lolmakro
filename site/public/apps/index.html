@@ -12,9 +12,7 @@
     background: linear-gradient(135deg, #0a1428 0%, #0f1f3a 50%, #0a1428 100%);
     color: #f0e6d2;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
     padding: 60px 20px;
   }
   .container { max-width: 800px; width: 100%; }
@@ -22,8 +20,7 @@
   .logo-wrapper {
     width: 88px; height: 88px;
     background: linear-gradient(135deg, #c8aa6e, #a8863e);
-    border-radius: 22px;
-    display: flex; align-items: center; justify-content: center;
+    border-radius: 22px; display: flex; align-items: center; justify-content: center;
     margin: 0 auto 20px;
     box-shadow: 0 8px 32px rgba(200,170,110,0.25);
   }
@@ -33,7 +30,7 @@
     background: linear-gradient(135deg, #f0e6d2, #c8aa6e);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .header p { color: #7a8a9a; font-size: 15px; margin-top: 8px; font-weight: 400; }
+  .header p { color: #7a8a9a; font-size: 15px; margin-top: 8px; }
   .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
   .card {
     background: linear-gradient(145deg, #1a2a3a, #152230);
@@ -76,59 +73,67 @@
     padding: 12px 28px; border-radius: 10px; text-decoration: none;
     font-weight: 600; font-size: 14px; transition: all 0.2s;
     border: none; cursor: pointer; width: 100%; justify-content: center;
-    position: relative;
   }
   .btn-gold {
-    background: linear-gradient(135deg, #c8aa6e, #b8963e);
-    color: #0a1428;
+    background: linear-gradient(135deg, #c8aa6e, #b8963e); color: #0a1428;
   }
   .btn-gold:hover {
     background: linear-gradient(135deg, #d4b87a, #c8aa6e);
-    box-shadow: 0 4px 16px rgba(200,170,110,0.35);
-    transform: scale(1.02);
-  }
-  .btn-locked {
-    background: #2a3a4a; color: #6a7a8a;
-    cursor: not-allowed; opacity: 0.6;
+    box-shadow: 0 4px 16px rgba(200,170,110,0.35); transform: scale(1.02);
   }
   .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
-  .tooltip {
-    visibility: hidden; opacity: 0;
-    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
-    background: #c8aa6e; color: #0a1428;
-    padding: 6px 14px; border-radius: 8px;
-    font-size: 12px; font-weight: 500; white-space: nowrap;
-    transition: opacity 0.2s; z-index: 10;
-  }
-  .tooltip::after {
-    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-    border: 6px solid transparent; border-top-color: #c8aa6e;
-  }
-  .btn-locked:hover .tooltip { visibility: visible; opacity: 1; }
   .size-tag { font-size: 11px; color: #6a7a8a; margin-top: 10px; }
-  .step-indicator {
-    font-size: 11px; color: #6a8a6a; margin-bottom: 16px;
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-  }
-  .step-indicator .step-dot {
-    width: 20px; height: 20px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-size: 11px; font-weight: 700;
-  }
-  .step-dot.active { background: #c8aa6e; color: #0a1428; }
-  .step-dot.inactive { background: #2a3a4a; color: #6a7a8a; }
-  .step-dot.done { background: #2a6a3a; color: #8aec8a; }
-  .step-line {
-    width: 40px; height: 2px; background: #2a3a4a;
-  }
-  .step-line.done { background: #2a6a3a; }
   .footer { margin-top: 56px; text-align: center; }
   .footer p { color: #4a5a6a; font-size: 13px; }
-  .footer a { color: #c8aa6e; text-decoration: none; transition: color 0.2s; }
+  .footer a { color: #c8aa6e; text-decoration: none; }
   .footer a:hover { color: #d4b87a; }
   .footer .links { display: flex; gap: 16px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
   .footer .links a { font-size: 13px; color: #6a7a8a; }
   .footer .links a:hover { color: #c8aa6e; }
+
+  /* Modal */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000; padding: 20px;
+  }
+  .modal {
+    background: linear-gradient(145deg, #1a2a3a, #152230);
+    border: 1px solid #3a4a5a; border-radius: 20px;
+    padding: 40px 36px 32px; max-width: 460px; width: 100%;
+    text-align: center; position: relative;
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none; color: #6a7a8a;
+    font-size: 22px; cursor: pointer; padding: 4px 8px;
+    line-height: 1; border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .modal-close:hover { color: #f0e6d2; background: #2a3a4a; }
+  .modal-icon {
+    font-size: 48px; margin-bottom: 16px;
+  }
+  .modal h2 {
+    font-size: 22px; font-weight: 700; color: #c8aa6e;
+    margin-bottom: 20px;
+  }
+  .modal ol {
+    text-align: left; color: #b0b8c8; font-size: 14px;
+    line-height: 1.8; padding-left: 20px; margin-bottom: 24px;
+  }
+  .modal ol li strong { color: #f0e6d2; }
+  .modal .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 32px; border-radius: 10px; text-decoration: none;
+    font-weight: 600; font-size: 14px; border: none; cursor: pointer;
+    background: #c8aa6e; color: #0a1428;
+    transition: all 0.2s;
+  }
+  .modal .btn:hover {
+    background: #d4b87a; transform: scale(1.02);
+  }
   @media (max-width: 640px) {
     body { padding: 32px 16px; }
     .header h1 { font-size: 26px; }
@@ -138,19 +143,28 @@
 <base href="/apps/">
 </head>
 <body>
+  <div id="modal" class="modal-overlay">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <div class="modal-icon">🎮</div>
+      <h2>lolsiken'e Hos Geldiniz</h2>
+      <ol>
+        <li><strong>1. PC Uygulamasini Indirin</strong> — Bilgisayariniza kurun ve calistirin.</li>
+        <li><strong>2. Mobil Uygulamayi Indirin</strong> — Telefonunuza kurun.</li>
+        <li><strong>3. QR Kod ile Eslesme</strong> — PC'deki uygulamada goren QR kodu mobil uygulama ile tarayin.</li>
+      </ol>
+      <p style="font-size:13px; color:#6a7a8a; margin-bottom:20px;">
+        PC uygulamasi kapaliyken mobil baglanti calismaz.
+      </p>
+      <button class="btn" onclick="closeModal()">Anladim, Baslayalim</button>
+    </div>
+  </div>
+
   <div class="container">
     <div class="header">
-      <div class="logo-wrapper">
-        <img src="logo.png" alt="lolsiken">
-      </div>
+      <div class="logo-wrapper"><img src="logo.png" alt="lolsiken"></div>
       <h1>lolsiken</h1>
       <p>League of Legends yardimci uygulamalari</p>
-    </div>
-
-    <div class="step-indicator">
-      <span class="step-dot active" id="step1">1</span>
-      <span class="step-line" id="line1"></span>
-      <span class="step-dot inactive" id="step2">2</span>
     </div>
 
     <div class="cards">
@@ -162,11 +176,11 @@
         <h2>Bilgisayar Uygulamasi</h2>
         <div class="version">v1.0.0</div>
         <p>Bilgisayarinizda calisan ana uygulama. League of Legends istemcisine baglanir, uzaktan erisim ve otomasyon ozellikleri sunar.</p>
-        <a class="btn btn-gold" id="exeBtn" href="LolMakroBridge.exe">
+        <a class="btn btn-gold" href="LolMakroBridge.exe">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           Windows EXE Indir
         </a>
-        <div class="size-tag">~10 MB</div>
+        <div class="size-tag">~7 MB</div>
       </div>
 
       <div class="card">
@@ -177,10 +191,9 @@
         <h2>Mobil Uygulama</h2>
         <div class="version">v1.0.0</div>
         <p>Telefonunuzdan PC'nizdeki lolsiken uygulamasina baglanin. QR kod okutarak eslesme yapin, uzaktan kontrol edin.</p>
-        <a class="btn btn-locked" id="apkBtn" href="app-release.apk">
+        <a class="btn btn-gold" href="app-release.apk">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           APK Indir
-          <span class="tooltip" id="apkTooltip">Once Windows EXE'yi indirin</span>
         </a>
         <div class="size-tag">~82 MB</div>
       </div>
@@ -196,50 +209,14 @@
   </div>
 
   <script>
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      localStorage.setItem('lolsiken_modal_seen', 'true');
+    }
     (function() {
-      const STEP1 = document.getElementById('step1');
-      const STEP2 = document.getElementById('step2');
-      const LINE1 = document.getElementById('line1');
-      const EXE_BTN = document.getElementById('exeBtn');
-      const APK_BTN = document.getElementById('apkBtn');
-      const APK_TOOLTIP = document.getElementById('apkTooltip');
-
-      const EXE_DOWNLOADED_KEY = 'lolsiken_exe_downloaded';
-
-      function updateUI() {
-        const exeDownloaded = localStorage.getItem(EXE_DOWNLOADED_KEY) === 'true';
-        if (exeDownloaded) {
-          STEP1.className = 'step-dot done';
-          STEP1.textContent = '✓';
-          LINE1.className = 'step-line done';
-          STEP2.className = 'step-dot active';
-          STEP2.textContent = '2';
-          APK_BTN.className = 'btn btn-gold';
-          APK_TOOLTIP.style.display = 'none';
-        } else {
-          STEP1.className = 'step-dot active';
-          STEP1.textContent = '1';
-          LINE1.className = 'step-line';
-          STEP2.className = 'step-dot inactive';
-          STEP2.textContent = '2';
-          APK_BTN.className = 'btn btn-locked';
-          APK_TOOLTIP.style.display = '';
-        }
+      if (localStorage.getItem('lolsiken_modal_seen') === 'true') {
+        document.getElementById('modal').style.display = 'none';
       }
-
-      EXE_BTN.addEventListener('click', function() {
-        localStorage.setItem(EXE_DOWNLOADED_KEY, 'true');
-        updateUI();
-      });
-
-      APK_BTN.addEventListener('click', function(e) {
-        const exeDownloaded = localStorage.getItem(EXE_DOWNLOADED_KEY) === 'true';
-        if (!exeDownloaded) {
-          e.preventDefault();
-        }
-      });
-
-      updateUI();
     })();
   </script>
 </body>
