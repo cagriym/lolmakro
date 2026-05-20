@@ -124,6 +124,29 @@ class TunnelManager:
         except Exception as exc:
             raise FileNotFoundError(f"cloudflared indirilemedi: {exc}") from exc
 
+    def start_auto_reconnect(self, check_interval: int = 15) -> None:
+        def _monitor() -> None:
+            while True:
+                time.sleep(check_interval)
+                try:
+                    if not self.is_running:
+                        self._log("tunnel not running, attempting auto-reconnect")
+                        with self._lock:
+                            if not self.is_running:
+                                self._proc = None
+                                self._public_url = None
+                        try:
+                            self.start(timeout_seconds=20)
+                            self._log(f"auto-reconnect success url={self._public_url}")
+                        except Exception as e:
+                            self._log(f"auto-reconnect failed: {e}")
+                except Exception:
+                    pass
+
+        t = threading.Thread(target=_monitor, daemon=True)
+        t.start()
+        self._log("auto-reconnect monitor started")
+
     def stop(self) -> None:
         with self._lock:
             self._stop_locked()

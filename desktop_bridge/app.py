@@ -205,7 +205,8 @@ class DesktopBridgeApp:
 
     def _start_tunnel(self) -> None:
         try:
-            self._ensure_tunnel_started()
+            url = self._ensure_tunnel_started()
+            self.tunnel.start_auto_reconnect()
             self._notify("lolsiken", "Remote tunnel baslatildi.")
         except Exception as exc:
             self._notify("lolsiken", f"Remote tunnel baslatilamadi: {exc}")
@@ -238,6 +239,8 @@ class DesktopBridgeApp:
     def run(self) -> None:
         self._register_with_site()
         self._check_apk_update()
+        if self.tunnel.is_running:
+            self.tunnel.start_auto_reconnect()
 
         icon = Path(self.settings.icon_path)
         if not icon.is_absolute():

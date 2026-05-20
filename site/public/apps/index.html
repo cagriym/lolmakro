@@ -17,148 +17,66 @@
     align-items: center;
     padding: 60px 20px;
   }
-  .container {
-    max-width: 800px;
-    width: 100%;
-  }
-  .header {
-    text-align: center;
-    margin-bottom: 56px;
-  }
+  .container { max-width: 800px; width: 100%; }
+  .header { text-align: center; margin-bottom: 56px; }
   .logo-wrapper {
-    width: 88px;
-    height: 88px;
+    width: 88px; height: 88px;
     background: linear-gradient(135deg, #c8aa6e, #a8863e);
     border-radius: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     margin: 0 auto 20px;
     box-shadow: 0 8px 32px rgba(200,170,110,0.25);
   }
-  .logo-wrapper img {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-  }
+  .logo-wrapper img { width: 56px; height: 56px; border-radius: 14px; }
   .header h1 {
-    font-size: 32px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+    font-size: 32px; font-weight: 800; letter-spacing: -0.5px;
     background: linear-gradient(135deg, #f0e6d2, #c8aa6e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .header p {
-    color: #7a8a9a;
-    font-size: 15px;
-    margin-top: 8px;
-    font-weight: 400;
-  }
-  .cards {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+  .header p { color: #7a8a9a; font-size: 15px; margin-top: 8px; font-weight: 400; }
+  .cards { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
   .card {
     background: linear-gradient(145deg, #1a2a3a, #152230);
-    border: 1px solid #2a3a4a;
-    border-radius: 20px;
-    padding: 36px 32px 32px;
-    text-align: center;
-    width: 300px;
-    flex: 1 1 280px;
+    border: 1px solid #2a3a4a; border-radius: 20px;
+    padding: 36px 32px 32px; text-align: center;
+    width: 300px; flex: 1 1 280px;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
   .card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, transparent, #c8aa6e, transparent);
-    opacity: 0;
-    transition: opacity 0.3s;
+    opacity: 0; transition: opacity 0.3s;
   }
-  .card:hover::before {
-    opacity: 1;
-  }
+  .card:hover::before { opacity: 1; }
   .card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 40px rgba(200,170,110,0.12);
     border-color: #3a4a5a;
   }
   .icon-box {
-    width: 72px;
-    height: 72px;
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 18px;
-    position: relative;
+    width: 72px; height: 72px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px; position: relative;
   }
-  .icon-box.pc {
-    background: linear-gradient(135deg, #2a4a6a, #1a3050);
-  }
-  .icon-box.mobile {
-    background: linear-gradient(135deg, #2a5a3a, #1a4028);
-  }
-  .icon-box img {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-  }
+  .icon-box.pc { background: linear-gradient(135deg, #2a4a6a, #1a3050); }
+  .icon-box.mobile { background: linear-gradient(135deg, #2a5a3a, #1a4028); }
+  .icon-box img { width: 44px; height: 44px; border-radius: 10px; }
   .platform-badge {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background: #c8aa6e;
-    color: #0a1428;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    position: absolute; top: -6px; right: -6px;
+    background: #c8aa6e; color: #0a1428;
+    font-size: 10px; font-weight: 700; padding: 2px 8px;
+    border-radius: 10px; text-transform: uppercase; letter-spacing: 0.5px;
   }
-  .card h2 {
-    font-size: 20px;
-    font-weight: 700;
-    color: #f0e6d2;
-    margin-bottom: 6px;
-  }
-  .version {
-    font-size: 12px;
-    color: #6a8a6a;
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
-  .card p {
-    font-size: 13px;
-    color: #8a9aaa;
-    margin-bottom: 24px;
-    line-height: 1.6;
-  }
+  .card h2 { font-size: 20px; font-weight: 700; color: #f0e6d2; margin-bottom: 6px; }
+  .version { font-size: 12px; color: #6a8a6a; margin-bottom: 12px; font-weight: 500; }
+  .card p { font-size: 13px; color: #8a9aaa; margin-bottom: 24px; line-height: 1.6; }
   .card .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all 0.2s;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    justify-content: center;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 10px; text-decoration: none;
+    font-weight: 600; font-size: 14px; transition: all 0.2s;
+    border: none; cursor: pointer; width: 100%; justify-content: center;
+    position: relative;
   }
   .btn-gold {
     background: linear-gradient(135deg, #c8aa6e, #b8963e);
@@ -169,55 +87,48 @@
     box-shadow: 0 4px 16px rgba(200,170,110,0.35);
     transform: scale(1.02);
   }
-  .btn-outline {
-    background: transparent;
-    color: #f0e6d2;
-    border: 1px solid #3a4a5a;
+  .btn-locked {
+    background: #2a3a4a; color: #6a7a8a;
+    cursor: not-allowed; opacity: 0.6;
   }
-  .btn-outline:hover {
-    background: #1a2a3a;
-    border-color: #c8aa6e;
+  .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .tooltip {
+    visibility: hidden; opacity: 0;
+    position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: #c8aa6e; color: #0a1428;
+    padding: 6px 14px; border-radius: 8px;
+    font-size: 12px; font-weight: 500; white-space: nowrap;
+    transition: opacity 0.2s; z-index: 10;
   }
-  .btn svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
+  .tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 6px solid transparent; border-top-color: #c8aa6e;
   }
-  .size-tag {
-    font-size: 11px;
-    color: #6a7a8a;
-    margin-top: 10px;
+  .btn-locked:hover .tooltip { visibility: visible; opacity: 1; }
+  .size-tag { font-size: 11px; color: #6a7a8a; margin-top: 10px; }
+  .step-indicator {
+    font-size: 11px; color: #6a8a6a; margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
   }
-  .footer {
-    margin-top: 56px;
-    text-align: center;
+  .step-indicator .step-dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
   }
-  .footer p {
-    color: #4a5a6a;
-    font-size: 13px;
+  .step-dot.active { background: #c8aa6e; color: #0a1428; }
+  .step-dot.inactive { background: #2a3a4a; color: #6a7a8a; }
+  .step-dot.done { background: #2a6a3a; color: #8aec8a; }
+  .step-line {
+    width: 40px; height: 2px; background: #2a3a4a;
   }
-  .footer a {
-    color: #c8aa6e;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer a:hover {
-    color: #d4b87a;
-  }
-  .footer .links {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    margin-top: 12px;
-    flex-wrap: wrap;
-  }
-  .footer .links a {
-    font-size: 13px;
-    color: #6a7a8a;
-  }
-  .footer .links a:hover {
-    color: #c8aa6e;
-  }
+  .step-line.done { background: #2a6a3a; }
+  .footer { margin-top: 56px; text-align: center; }
+  .footer p { color: #4a5a6a; font-size: 13px; }
+  .footer a { color: #c8aa6e; text-decoration: none; transition: color 0.2s; }
+  .footer a:hover { color: #d4b87a; }
+  .footer .links { display: flex; gap: 16px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+  .footer .links a { font-size: 13px; color: #6a7a8a; }
+  .footer .links a:hover { color: #c8aa6e; }
   @media (max-width: 640px) {
     body { padding: 32px 16px; }
     .header h1 { font-size: 26px; }
@@ -236,6 +147,12 @@
       <p>League of Legends yardimci uygulamalari</p>
     </div>
 
+    <div class="step-indicator">
+      <span class="step-dot active" id="step1">1</span>
+      <span class="step-line" id="line1"></span>
+      <span class="step-dot inactive" id="step2">2</span>
+    </div>
+
     <div class="cards">
       <div class="card">
         <div class="icon-box pc">
@@ -245,7 +162,7 @@
         <h2>Bilgisayar Uygulamasi</h2>
         <div class="version">v1.0.0</div>
         <p>Bilgisayarinizda calisan ana uygulama. League of Legends istemcisine baglanir, uzaktan erisim ve otomasyon ozellikleri sunar.</p>
-        <a class="btn btn-gold" href="LolMakroBridge.exe">
+        <a class="btn btn-gold" id="exeBtn" href="LolMakroBridge.exe">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           Windows EXE Indir
         </a>
@@ -260,9 +177,10 @@
         <h2>Mobil Uygulama</h2>
         <div class="version">v1.0.0</div>
         <p>Telefonunuzdan PC'nizdeki lolsiken uygulamasina baglanin. QR kod okutarak eslesme yapin, uzaktan kontrol edin.</p>
-        <a class="btn btn-gold" href="app-release.apk">
+        <a class="btn btn-locked" id="apkBtn" href="app-release.apk">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           APK Indir
+          <span class="tooltip" id="apkTooltip">Once Windows EXE'yi indirin</span>
         </a>
         <div class="size-tag">~82 MB</div>
       </div>
@@ -276,5 +194,53 @@
       </div>
     </div>
   </div>
+
+  <script>
+    (function() {
+      const STEP1 = document.getElementById('step1');
+      const STEP2 = document.getElementById('step2');
+      const LINE1 = document.getElementById('line1');
+      const EXE_BTN = document.getElementById('exeBtn');
+      const APK_BTN = document.getElementById('apkBtn');
+      const APK_TOOLTIP = document.getElementById('apkTooltip');
+
+      const EXE_DOWNLOADED_KEY = 'lolsiken_exe_downloaded';
+
+      function updateUI() {
+        const exeDownloaded = localStorage.getItem(EXE_DOWNLOADED_KEY) === 'true';
+        if (exeDownloaded) {
+          STEP1.className = 'step-dot done';
+          STEP1.textContent = '✓';
+          LINE1.className = 'step-line done';
+          STEP2.className = 'step-dot active';
+          STEP2.textContent = '2';
+          APK_BTN.className = 'btn btn-gold';
+          APK_TOOLTIP.style.display = 'none';
+        } else {
+          STEP1.className = 'step-dot active';
+          STEP1.textContent = '1';
+          LINE1.className = 'step-line';
+          STEP2.className = 'step-dot inactive';
+          STEP2.textContent = '2';
+          APK_BTN.className = 'btn btn-locked';
+          APK_TOOLTIP.style.display = '';
+        }
+      }
+
+      EXE_BTN.addEventListener('click', function() {
+        localStorage.setItem(EXE_DOWNLOADED_KEY, 'true');
+        updateUI();
+      });
+
+      APK_BTN.addEventListener('click', function(e) {
+        const exeDownloaded = localStorage.getItem(EXE_DOWNLOADED_KEY) === 'true';
+        if (!exeDownloaded) {
+          e.preventDefault();
+        }
+      });
+
+      updateUI();
+    })();
+  </script>
 </body>
 </html>
