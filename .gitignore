@@ -12,9 +12,13 @@ build/
 dist/
 *.spec
 
-# Runtime/generated files
-temp_capture.png
-config.json
+# Runtime data
+data/
+
+# Large build artifacts
+site/public/apk/app-release.apk
+site/public/apps/app-release.apk
+site/public/apps/LolMakroBridge.exe
 
 # IDE/OS
 .vscode/
