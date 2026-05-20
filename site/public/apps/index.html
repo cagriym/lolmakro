@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>lolsiken - Uygulamalar</title>
+<title>GameMode1 - Uygulamalar</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
@@ -147,7 +147,7 @@
     <div class="modal">
       <button class="modal-close" onclick="closeModal()">&times;</button>
       <div class="modal-icon">🎮</div>
-      <h2>lolsiken'e Hos Geldiniz</h2>
+      <h2>GameMode1'e Hos Geldiniz</h2>
       <ol>
         <li><strong>1. PC Uygulamasini Indirin</strong> — Bilgisayariniza kurun ve calistirin.</li>
         <li><strong>2. Mobil Uygulamayi Indirin</strong> — Telefonunuza kurun.</li>
@@ -162,8 +162,8 @@
 
   <div class="container">
     <div class="header">
-      <div class="logo-wrapper"><img src="logo.png" alt="lolsiken"></div>
-      <h1>lolsiken</h1>
+      <div class="logo-wrapper"><img src="logo.png" alt="GameMode1"></div>
+      <h1>GameMode1</h1>
       <p>League of Legends yardimci uygulamalari</p>
     </div>
 
@@ -171,7 +171,7 @@
       <div class="card">
         <div class="icon-box pc">
           <span class="platform-badge">PC</span>
-          <img src="pc-icon.ico" alt="PC">
+          <img src="logo.png" alt="PC">
         </div>
         <h2>Bilgisayar Uygulamasi</h2>
         <div class="version">v1.0.0</div>
@@ -186,11 +186,11 @@
       <div class="card">
         <div class="icon-box mobile">
           <span class="platform-badge">Mobil</span>
-          <img src="mobile-icon.png" alt="Mobil">
+          <img src="logo.png" alt="Mobil">
         </div>
         <h2>Mobil Uygulama</h2>
         <div class="version">v1.0.0</div>
-        <p>Telefonunuzdan PC'nizdeki lolsiken uygulamasina baglanin. QR kod okutarak eslesme yapin, uzaktan kontrol edin.</p>
+        <p>Telefonunuzdan PC'nizdeki GameMode1 uygulamasina baglanin. QR kod okutarak eslesme yapin, uzaktan kontrol edin.</p>
         <a class="btn btn-gold" href="app-release.apk">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           APK Indir
@@ -200,7 +200,7 @@
     </div>
 
     <div class="footer">
-      <p>lolsiken &copy; 2026</p>
+      <p>GameMode1 &copy; 2026</p>
       <div class="links">
         <a href="/">Ana Sayfa</a>
         <a href="https://github.com/cagriym/lolmakro" target="_blank">GitHub</a>
@@ -211,10 +211,10 @@
   <script>
     function closeModal() {
       document.getElementById('modal').style.display = 'none';
-      localStorage.setItem('lolsiken_modal_seen', 'true');
+      localStorage.setItem('GameMode1_modal_seen', 'true');
     }
     (function() {
-      if (localStorage.getItem('lolsiken_modal_seen') === 'true') {
+      if (localStorage.getItem('GameMode1_modal_seen') === 'true') {
         document.getElementById('modal').style.display = 'none';
       }
     })();

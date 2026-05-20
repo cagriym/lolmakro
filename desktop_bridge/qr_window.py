@@ -75,7 +75,7 @@ class QRWindow:
             self.current_window.destroy()
 
         window = tk.Toplevel(self.root)
-        window.title("lolsiken - Telefon QR")
+        window.title("GameMode1 - Telefon QR")
         self._apply_icon(window)
         self._center_window(window, 360, 460)
         window.resizable(False, False)
@@ -108,7 +108,7 @@ class QRWindow:
             self.current_window.destroy()
 
         window = tk.Toplevel(self.root)
-        window.title("lolsiken - Telefon QR")
+        window.title("GameMode1 - Telefon QR")
         self._apply_icon(window)
         self._center_window(window, 360, 220)
         window.resizable(False, False)
@@ -129,7 +129,7 @@ class QRWindow:
             self.current_window.destroy()
 
         window = tk.Toplevel(self.root)
-        window.title("lolsiken - Telefon QR")
+        window.title("GameMode1 - Telefon QR")
         self._apply_icon(window)
         self._center_window(window, 380, 250)
         window.resizable(False, False)
@@ -161,7 +161,7 @@ class QRWindow:
             self.current_window.destroy()
 
         window = tk.Toplevel(self.root)
-        window.title("lolsiken")
+        window.title("GameMode1")
         self._apply_icon(window)
         self._center_window(window, 420, 340)
         window.resizable(False, False)

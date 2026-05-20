@@ -31,7 +31,7 @@ export default function Home() {
         <>
           <p style={{ color: "#ff9ea1", marginTop: 12 }}>{error}</p>
           <p style={{ color: "#9fb0cc", marginTop: 8, fontSize: 14 }}>
-            PC'de lolsiken uygulamasini calistirin.
+            PC'de GameMode1 uygulamasini calistirin.
           </p>
         </>
       )}

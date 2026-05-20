@@ -24,9 +24,9 @@ class TrayController:
         self.icon_path = icon_path
         self.startup_enabled_getter = startup_enabled_getter
         self._icon = pystray.Icon(
-            "lolsiken",
+            "GameMode1",
             self._load_image(),
-            "lolsiken",
+            "GameMode1",
             self._build_menu(
                 on_show_qr,
                 on_toggle_startup,

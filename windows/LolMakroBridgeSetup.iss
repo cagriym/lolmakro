@@ -1,4 +1,4 @@
-#define MyAppName "lolsiken"
+#define MyAppName "GameMode1"
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "xmemo"
 #define MyAppExeName "LolMakroBridge.exe"
@@ -13,7 +13,7 @@ DefaultDirName={autopf}\LolMakroBridgeInstaller
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
 OutputDir=..\installer
-OutputBaseFilename=lolsiken_setup_v10
+OutputBaseFilename=GameMode1_setup_v10
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -40,7 +40,7 @@ Filename: "powershell.exe"; Parameters: "-ExecutionPolicy Bypass -File ""{app}\w
 
 [Code]
 const
-  MusicAlias = 'lolsiken_theme';
+  MusicAlias = 'GameMode1_theme';
 
 var
   MusicToggleButton: TButton;
@@ -163,7 +163,7 @@ end;
 procedure InitializeWizard;
 begin
   WizardForm.Color := $B469FF;
-  WizardForm.Caption := 'lolsiken Kurulum Sihirbazi';
+  WizardForm.Caption := 'GameMode1 Kurulum Sihirbazi';
 
   MusicPaused := False;
   MusicAttempted := False;

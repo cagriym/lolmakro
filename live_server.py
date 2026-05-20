@@ -2146,7 +2146,7 @@ async def mobile_session_state(request: Request) -> dict[str, Any]:
     device_id = _require_session(request)
     if device_id:
         return {"paired": True, "device_id": device_id}
-    return {"paired": request.cookies.get("lolsiken_pair") == "ok"}
+    return {"paired": request.cookies.get("GameMode1_pair") == "ok"}
 
 @app.get("/mobile/pair")
 async def mobile_pair(token: str = Query(..., min_length=16)) -> Response:
@@ -2154,7 +2154,7 @@ async def mobile_pair(token: str = Query(..., min_length=16)) -> Response:
         raise HTTPException(status_code=401, detail="Pairing token gecersiz veya suresi doldu.")
     response = RedirectResponse(url="/", status_code=302)
     response.set_cookie(
-        key="lolsiken_pair",
+        key="GameMode1_pair",
         value="ok",
         httponly=True,
         secure=False,

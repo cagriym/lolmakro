@@ -22,7 +22,7 @@ from .tunnel_manager import TunnelManager
 class DesktopBridgeApp:
     def __init__(self, settings: AppSettings) -> None:
         try:
-            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("lolsiken.bridge")
+            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("GameMode1.bridge")
         except Exception:
             pass
         self.settings = settings
@@ -112,7 +112,7 @@ class DesktopBridgeApp:
             }
             resp = httpx.post(f"{site_url}/api/pc/register", json=payload, timeout=10)
             if resp.status_code == 200:
-                self._notify("lolsiken", "Site kaydi basarili.")
+                self._notify("GameMode1", "Site kaydi basarili.")
         except Exception:
             pass
 
@@ -141,7 +141,7 @@ class DesktopBridgeApp:
 
             if self._is_newer_version(latest, current):
                 self._notify(
-                    "lolsiken",
+                    "GameMode1",
                     f"Mobil uygulama guncellemesi: v{latest}. {data.get('download_url', '')} adresinden indirin.",
                 )
         except Exception:
@@ -196,29 +196,29 @@ class DesktopBridgeApp:
             self.qr_window.show_loading("Guvenli baglanti linki olusturuluyor...")
             url = self._build_pair_url()
             self.qr_window.show(url)
-            self._notify("lolsiken", "QR kod olusturuldu.")
+            self._notify("GameMode1", "QR kod olusturuldu.")
         except Exception as exc:
             error_text = str(exc) or "Bilinmeyen hata"
             self.qr_window.show_error(error_text)
-            self._notify("lolsiken", f"QR kod olusturulamadi: {error_text}")
+            self._notify("GameMode1", f"QR kod olusturulamadi: {error_text}")
 
     def _start_tunnel(self) -> None:
         try:
             url = self._ensure_tunnel_started()
             self.tunnel.start_auto_reconnect()
-            self._notify("lolsiken", "Remote tunnel baslatildi.")
+            self._notify("GameMode1", "Remote tunnel baslatildi.")
         except Exception as exc:
-            self._notify("lolsiken", f"Remote tunnel baslatilamadi: {exc}")
+            self._notify("GameMode1", f"Remote tunnel baslatilamadi: {exc}")
 
     def _stop_tunnel(self) -> None:
         self.tunnel.stop()
-        self._notify("lolsiken", "Remote tunnel durduruldu.")
+        self._notify("GameMode1", "Remote tunnel durduruldu.")
 
     def _toggle_startup(self) -> None:
         current = is_startup_enabled(self.settings.startup_registry_name)
         new_value = not current
         set_startup_enabled(self.settings.startup_registry_name, new_value)
-        self._notify("lolsiken", "Baslangicta Calistir: Acik" if new_value else "Baslangicta Calistir: Kapali")
+        self._notify("GameMode1", "Baslangicta Calistir: Acik" if new_value else "Baslangicta Calistir: Kapali")
 
     def _restart(self) -> None:
         root = self._repo_root
@@ -258,7 +258,7 @@ class DesktopBridgeApp:
 
         first_run = not self._first_run_marker.exists()
         if first_run:
-            self._notify("lolsiken", "Uygulama acildi. Sistem tepsisinde gorebilirsiniz.")
+            self._notify("GameMode1", "Uygulama acildi. Sistem tepsisinde gorebilirsiniz.")
             startup_image = Path(r"C:\Users\xmemo\OneDrive\Resimler\Screenshots\Ekran görüntüsü 2026-05-18 180151.png")
             if startup_image.exists():
                 self.qr_window.show_startup_info(
