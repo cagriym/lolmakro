@@ -7,6 +7,8 @@ from pathlib import Path
 from urllib.parse import quote
 import ctypes
 
+from dotenv import load_dotenv
+
 import httpx
 import uvicorn
 
@@ -21,6 +23,8 @@ from .tunnel_manager import TunnelManager
 
 class DesktopBridgeApp:
     def __init__(self, settings: AppSettings) -> None:
+        load_dotenv()
+        load_dotenv(Path(os.environ.get("LOCALAPPDATA", ".")) / "LolMakroBridge" / ".env")
         try:
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("GameMode1.bridge")
         except Exception:
@@ -157,7 +161,7 @@ class DesktopBridgeApp:
         return _parse(latest) > _parse(current) if current else True
 
     def _create_site_token(self) -> str | None:
-        site_url = self._get_site_url()
+        site_url = self._get_configured_public_base() or self._get_site_url()
         if not site_url or not self._device_id:
             return None
         try:
@@ -173,17 +177,16 @@ class DesktopBridgeApp:
         return None
 
     def _build_pair_url(self) -> str:
-        site_url = self._get_site_url()
-        if site_url and self._device_id:
-            token = self._create_site_token() or token_manager.create_token()
-            return f"{site_url}/qrcode?token={quote(token, safe='')}"
-
-        token = token_manager.create_token()
         remote_base = self._get_configured_public_base()
         if not remote_base:
             remote_base = self._ensure_tunnel_started()
 
-        return f"{remote_base}/mobile/pair?token={quote(token, safe='')}"
+        if self._device_id:
+            token = self._create_site_token() or token_manager.create_token()
+        else:
+            token = token_manager.create_token()
+
+        return f"{remote_base}/qrcode?token={quote(token, safe='')}"
 
     def _download_apk(self) -> None:
         site_url = self._get_site_url()
