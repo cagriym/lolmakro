@@ -2134,6 +2134,13 @@ async def site_latest_apk() -> JSONResponse:
 
 # ---------------------------------------------------------------------------
 
+@app.post("/api/connect")
+async def api_connect(request: Request) -> JSONResponse:
+    device_id = "mobile_" + secrets.token_hex(8)
+    session_token = session_manager.create_session(device_id)
+    return JSONResponse({"status": "ok", "device_id": device_id, "session_token": session_token})
+
+
 def _require_session(request: Request) -> str | None:
     token = request.headers.get("x-session-token") or request.query_params.get("session_token")
     if token:

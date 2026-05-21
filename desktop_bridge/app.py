@@ -184,6 +184,17 @@ class DesktopBridgeApp:
             pass
         return None
 
+    def _get_local_ip(self) -> str | None:
+        try:
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            s.settimeout(1)
+            s.connect(("8.8.8.8", 80))
+            local = s.getsockname()[0]
+            s.close()
+            return f"{local}:{self.settings.backend_port}"
+        except Exception:
+            return None
+
     def _build_pair_url(self) -> str:
         remote_base = self._get_configured_public_base()
         if not remote_base:
@@ -194,7 +205,11 @@ class DesktopBridgeApp:
         else:
             token = token_manager.create_token()
 
-        return f"{remote_base}/qrcode?token={quote(token, safe='')}"
+        local = self._get_local_ip()
+        url = f"{remote_base}/qrcode?token={quote(token, safe='')}"
+        if local:
+            url += f"&local={quote(local, safe='')}"
+        return url
 
     def _download_apk(self) -> None:
         site_url = self._get_site_url()
