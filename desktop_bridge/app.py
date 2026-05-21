@@ -3,6 +3,7 @@
 import json
 import os
 import socket
+import sys
 from pathlib import Path
 from urllib.parse import quote
 import ctypes
@@ -23,7 +24,7 @@ from .tunnel_manager import TunnelManager
 
 class DesktopBridgeApp:
     def __init__(self, settings: AppSettings) -> None:
-        env_path = Path(__file__).resolve().parent.parent / ".env"
+        env_path = Path(sys.executable).resolve().parent / ".env" if getattr(sys, 'frozen', False) else Path(__file__).resolve().parent.parent / ".env"
         if env_path.exists():
             load_dotenv(env_path)
         else:
