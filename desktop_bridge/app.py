@@ -23,8 +23,15 @@ from .tunnel_manager import TunnelManager
 
 class DesktopBridgeApp:
     def __init__(self, settings: AppSettings) -> None:
-        load_dotenv()
-        load_dotenv(Path(os.environ.get("LOCALAPPDATA", ".")) / "LolMakroBridge" / ".env")
+        env_path = Path(__file__).resolve().parent.parent / ".env"
+        if env_path.exists():
+            load_dotenv(env_path)
+        else:
+            load_dotenv()
+        try:
+            load_dotenv(Path(os.environ.get("LOCALAPPDATA", ".")) / "LolMakroBridge" / ".env")
+        except Exception:
+            pass
         try:
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("GameMode1.bridge")
         except Exception:
